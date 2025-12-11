@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Update -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1267,9 +1266,10 @@
                         <option>Active</option>
                         <option>Inactive</option>
                     </select>
+                    <button class="btn btn-primary" onclick="exportUsersToExcel()">📊 Export to Excel</button>
                 </div>
                 <div class="table-container">
-                    <table>
+                    <table id="usersTable">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -1278,7 +1278,6 @@
                                 <th>Password</th>
                                 <th>Status</th>
                                 <th>Last Login</th>
-                                <th>Last Logon Time</th>
                                 <th>Last Password Change</th>
                                 <th>Actions</th>
                             </tr>
@@ -1290,9 +1289,8 @@
                                 <td>Admin</td>
                                 <td>Tk9mR#p2vL</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 08:30</td>
-                                <td>2024-12-11 08:30:42</td>
-                                <td>2024-11-28</td>
+                                <td>2025-01-11 08:30</td>
+                                <td>2024-12-28</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1306,9 +1304,8 @@
                                 <td>Admin</td>
                                 <td>Xr8hQw!kN4</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 09:15</td>
-                                <td>2024-12-11 09:15:47</td>
-                                <td>2024-10-15</td>
+                                <td>2025-01-11 09:15</td>
+                                <td>2024-11-15</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1322,9 +1319,8 @@
                                 <td>Admin</td>
                                 <td>Ym3pDs@jF7</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-10 16:45</td>
-                                <td>2024-12-10 16:45:38</td>
-                                <td>2024-11-05</td>
+                                <td>2025-01-10 16:45</td>
+                                <td>2025-01-05</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1338,9 +1334,8 @@
                                 <td>Admin</td>
                                 <td>Bf6vKm$zH9</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 07:20</td>
-                                <td>2024-12-11 07:20:08</td>
-                                <td>2024-09-22</td>
+                                <td>2025-01-11 07:20</td>
+                                <td>2024-10-22</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1354,9 +1349,8 @@
                                 <td>Admin</td>
                                 <td>Wn4rGx&tP8</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 08:00</td>
-                                <td>2024-12-11 08:00:51</td>
-                                <td>2024-10-30</td>
+                                <td>2025-01-11 08:00</td>
+                                <td>2024-11-30</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1370,8 +1364,7 @@
                                 <td>Admin</td>
                                 <td>Zq7sLm!cJ2</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 09:45</td>
-                                <td>2024-12-11 09:45:23</td>
+                                <td>2025-01-11 09:45</td>
                                 <td>2023-12-15</td>
                                 <td>
                                     <div class="action-buttons">
@@ -1386,9 +1379,8 @@
                                 <td>HR</td>
                                 <td>Ht5bNx#wR3</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 08:15</td>
-                                <td>2024-12-11 08:15:33</td>
-                                <td>2024-11-18</td>
+                                <td>2025-01-11 08:15</td>
+                                <td>2024-12-18</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1402,9 +1394,8 @@
                                 <td>Warehouse</td>
                                 <td>Pv9kFd@mS6</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 06:30</td>
-                                <td>2024-12-11 06:30:17</td>
-                                <td>2024-10-08</td>
+                                <td>2025-01-11 06:30</td>
+                                <td>2024-11-08</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1418,9 +1409,8 @@
                                 <td>Warehouse</td>
                                 <td>Jt8xVn!gB4</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 06:45</td>
-                                <td>2024-12-11 06:45:31</td>
-                                <td>2024-11-12</td>
+                                <td>2025-01-11 06:45</td>
+                                <td>2024-12-12</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1434,9 +1424,8 @@
                                 <td>Warehouse</td>
                                 <td>Qw2hMp$dY7</td>
                                 <td><span class="status-badge status-inactive">Inactive</span></td>
-                                <td>2024-12-09 18:20</td>
-                                <td>2024-12-09 18:20:45</td>
-                                <td>2024-09-14</td>
+                                <td>2025-01-09 18:20</td>
+                                <td>2024-10-14</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1450,9 +1439,8 @@
                                 <td>Warehouse</td>
                                 <td>Lr6tBx#fK9</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 07:00</td>
-                                <td>2024-12-11 07:00:45</td>
-                                <td>2024-10-25</td>
+                                <td>2025-01-11 07:00</td>
+                                <td>2024-11-25</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1466,9 +1454,8 @@
                                 <td>Accounting</td>
                                 <td>Vs3nZk@rH8</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 08:45</td>
-                                <td>2024-12-11 08:45:15</td>
-                                <td>2024-11-22</td>
+                                <td>2025-01-11 08:45</td>
+                                <td>2024-12-22</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1482,9 +1469,8 @@
                                 <td>Accounting</td>
                                 <td>Cm9wTf!jL5</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 09:00</td>
-                                <td>2024-12-11 09:00:35</td>
-                                <td>2024-10-18</td>
+                                <td>2025-01-11 09:00</td>
+                                <td>2024-11-18</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1498,9 +1484,8 @@
                                 <td>Accounting</td>
                                 <td>Nb4yGx&pQ1</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 08:50</td>
-                                <td>2024-12-11 08:50:28</td>
-                                <td>2024-09-29</td>
+                                <td>2025-01-11 08:50</td>
+                                <td>2024-10-29</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1514,9 +1499,8 @@
                                 <td>Accounting</td>
                                 <td>Dt7rSm#vX6</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2024-12-11 09:10</td>
-                                <td>2024-12-11 09:10:12</td>
-                                <td>2024-11-01</td>
+                                <td>2025-01-11 09:10</td>
+                                <td>2025-01-01</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -2376,8 +2360,8 @@
                     <h2 class="card-title">Log Activity Review</h2>
                 </div>
                 <div class="search-bar">
-                    <input type="date" class="form-input" value="2024-12-11">
-                    <input type="date" class="form-input" value="2024-12-11">
+                    <input type="date" class="form-input" value="2025-01-11">
+                    <input type="date" class="form-input" value="2025-01-11">
                     <select class="form-select">
                         <option>All Activities</option>
                         <option>Login</option>
@@ -2390,7 +2374,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 09:45:23</span>
+                        <span class="log-timestamp">2025-01-11 09:45:23</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2403,7 +2387,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 09:15:47</span>
+                        <span class="log-timestamp">2025-01-11 09:15:47</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2416,7 +2400,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 09:10:12</span>
+                        <span class="log-timestamp">2025-01-11 09:10:12</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2429,7 +2413,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 09:00:35</span>
+                        <span class="log-timestamp">2025-01-11 09:00:35</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2442,7 +2426,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 08:50:28</span>
+                        <span class="log-timestamp">2025-01-11 08:50:28</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2455,7 +2439,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 08:45:15</span>
+                        <span class="log-timestamp">2025-01-11 08:45:15</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2468,7 +2452,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 08:30:42</span>
+                        <span class="log-timestamp">2025-01-11 08:30:42</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2481,7 +2465,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 08:25:18</span>
+                        <span class="log-timestamp">2025-01-11 08:25:18</span>
                         <span class="log-type log-type-change">ORDER CHANGE</span>
                     </div>
                     <div class="log-content">
@@ -2494,7 +2478,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 08:15:33</span>
+                        <span class="log-timestamp">2025-01-11 08:15:33</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2507,7 +2491,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 08:00:51</span>
+                        <span class="log-timestamp">2025-01-11 08:00:51</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2520,7 +2504,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 07:45:22</span>
+                        <span class="log-timestamp">2025-01-11 07:45:22</span>
                         <span class="log-type log-type-change">ORDER CHANGE</span>
                     </div>
                     <div class="log-content">
@@ -2533,7 +2517,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 07:20:08</span>
+                        <span class="log-timestamp">2025-01-11 07:20:08</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2546,7 +2530,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 07:05:19</span>
+                        <span class="log-timestamp">2025-01-11 07:05:19</span>
                         <span class="log-type log-type-failed">FAILED LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2559,7 +2543,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 07:00:45</span>
+                        <span class="log-timestamp">2025-01-11 07:00:45</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2572,7 +2556,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 06:45:31</span>
+                        <span class="log-timestamp">2025-01-11 06:45:31</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2585,7 +2569,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-11 06:30:17</span>
+                        <span class="log-timestamp">2025-01-11 06:30:17</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2598,7 +2582,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-10 18:30:55</span>
+                        <span class="log-timestamp">2025-01-10 18:30:55</span>
                         <span class="log-type log-type-logout">LOGOUT</span>
                     </div>
                     <div class="log-content">
@@ -2611,7 +2595,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-10 17:15:22</span>
+                        <span class="log-timestamp">2025-01-10 17:15:22</span>
                         <span class="log-type log-type-change">ORDER CHANGE</span>
                     </div>
                     <div class="log-content">
@@ -2624,7 +2608,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-10 16:45:38</span>
+                        <span class="log-timestamp">2025-01-10 16:45:38</span>
                         <span class="log-type log-type-login">LOGIN</span>
                     </div>
                     <div class="log-content">
@@ -2644,8 +2628,8 @@
                     <h2 class="card-title">Application Change Log</h2>
                 </div>
                 <div class="search-bar">
-                    <input type="date" class="form-input" value="2024-12-01">
-                    <input type="date" class="form-input" value="2024-12-11">
+                    <input type="date" class="form-input" value="2025-01-01">
+                    <input type="date" class="form-input" value="2025-01-11">
                     <select class="form-select">
                         <option>All Changes</option>
                         <option>Configuration</option>
@@ -2657,7 +2641,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-10 22:30:00</span>
+                        <span class="log-timestamp">2025-01-10 22:30:00</span>
                         <span class="log-type log-type-change">SECURITY PATCH</span>
                     </div>
                     <div class="log-content">
@@ -2670,20 +2654,20 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-08 18:00:00</span>
+                        <span class="log-timestamp">2025-01-08 18:00:00</span>
                         <span class="log-type log-type-change">PROGRAM CHANGE</span>
                     </div>
                     <div class="log-content">
                         <strong>Application Update v2.15.0</strong> - Major feature release
                     </div>
                     <div class="log-details">
-                        Deployed by: Bruce Banner (Developer) | Build: WMS-2024-12-08-PROD | New Features: Advanced inventory forecasting with AI predictions, Real-time stock level monitoring dashboard, Automated reorder point calculations, Enhanced reporting with customizable templates | Improvements: Optimized database queries for 40% faster load times, Improved mobile responsive design, Updated user interface with modern styling | Status: Successfully deployed | Testing: Passed all QA checks
+                        Deployed by: Bruce Banner (Developer) | Build: WMS-2025-01-08-PROD | New Features: Advanced inventory forecasting with AI predictions, Real-time stock level monitoring dashboard, Automated reorder point calculations, Enhanced reporting with customizable templates | Improvements: Optimized database queries for 40% faster load times, Improved mobile responsive design, Updated user interface with modern styling | Status: Successfully deployed | Testing: Passed all QA checks
                     </div>
                 </div>
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-05 14:30:00</span>
+                        <span class="log-timestamp">2025-01-05 14:30:00</span>
                         <span class="log-type log-type-change">CONFIGURATION</span>
                     </div>
                     <div class="log-content">
@@ -2696,20 +2680,20 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-03 09:15:00</span>
+                        <span class="log-timestamp">2025-01-03 09:15:00</span>
                         <span class="log-type log-type-change">PROGRAM CHANGE</span>
                     </div>
                     <div class="log-content">
                         <strong>Database Migration v2.14.5</strong> - Infrastructure upgrade
                     </div>
                     <div class="log-details">
-                        Executed by: Scott Lang (Developer) | Migration ID: DB-MIG-2024-12-03 | Details: Migrated from MySQL 5.7 to MySQL 8.0 for improved performance and security, Optimized table indexes for faster query execution, Implemented database sharding for better scalability, Added read replicas for load distribution | Performance Impact: 50% faster query response times, 99.99% uptime maintained | Backup: Full backup completed before migration | Rollback Plan: Tested and verified | Status: Migration completed successfully with zero data loss
+                        Executed by: Scott Lang (Developer) | Migration ID: DB-MIG-2025-01-03 | Details: Migrated from MySQL 5.7 to MySQL 8.0 for improved performance and security, Optimized table indexes for faster query execution, Implemented database sharding for better scalability, Added read replicas for load distribution | Performance Impact: 50% faster query response times, 99.99% uptime maintained | Backup: Full backup completed before migration | Rollback Plan: Tested and verified | Status: Migration completed successfully with zero data loss
                     </div>
                 </div>
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-12-01 16:45:00</span>
+                        <span class="log-timestamp">2025-01-01 16:45:00</span>
                         <span class="log-type log-type-change">CONFIGURATION</span>
                     </div>
                     <div class="log-content">
@@ -2722,7 +2706,7 @@
 
                 <div class="log-entry">
                     <div class="log-header">
-                        <span class="log-timestamp">2024-11-28 10:00:00</span>
+                        <span class="log-timestamp">2024-12-28 10:00:00</span>
                         <span class="log-type log-type-change">SECURITY PATCH</span>
                     </div>
                     <div class="log-content">
@@ -2848,6 +2832,55 @@
             
             // Add active class to clicked tab
             event.target.classList.add('active');
+        }
+
+        // Export users to Excel/CSV
+        function exportUsersToExcel() {
+            const table = document.getElementById('usersTable');
+            const rows = table.querySelectorAll('tr');
+            let csvContent = '';
+            
+            // Process each row
+            rows.forEach((row, index) => {
+                const cols = row.querySelectorAll('td, th');
+                const rowData = [];
+                
+                cols.forEach((col, colIndex) => {
+                    // Skip the Actions column (last column)
+                    if (colIndex < cols.length - 1) {
+                        let cellText = col.textContent.trim();
+                        // Remove extra whitespace and newlines
+                        cellText = cellText.replace(/\s+/g, ' ');
+                        // Escape quotes and wrap in quotes if contains comma
+                        if (cellText.includes(',') || cellText.includes('"')) {
+                            cellText = '"' + cellText.replace(/"/g, '""') + '"';
+                        }
+                        rowData.push(cellText);
+                    }
+                });
+                
+                csvContent += rowData.join(',') + '\n';
+            });
+            
+            // Create blob and download
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            // Generate filename with current date
+            const now = new Date();
+            const dateStr = now.toISOString().slice(0, 10);
+            const filename = `SuperHero_Users_Export_${dateStr}.csv`;
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show success message (optional)
+            alert('User data exported successfully!\nFile: ' + filename);
         }
 
         // Add smooth scrolling
