@@ -1129,7 +1129,19 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label class="form-label">Minimum Password Length</label>
-                        <input type="number" class="form-input" value="12" min="8" max="32">
+                        <input type="number" class="form-input" value="6" min="6" max="32">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Number of Digits</label>
+                        <input type="number" class="form-input" value="1" min="0" max="10">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Special Characters</label>
+                        <input type="number" class="form-input" value="0" min="0" max="10">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Upper Case Characters</label>
+                        <input type="number" class="form-input" value="0" min="0" max="10">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Password Complexity</label>
@@ -1262,9 +1274,11 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Password</th>
                                 <th>Status</th>
                                 <th>Last Login</th>
                                 <th>Last Logon Time</th>
+                                <th>Last Password Change</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -1273,9 +1287,11 @@
                                 <td>Steve Roger</td>
                                 <td>steve.roger@superhero.com</td>
                                 <td>Admin</td>
+                                <td>Tk9mR#p2vL</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 08:30</td>
                                 <td>2024-12-11 08:30:42</td>
+                                <td>2024-11-28</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1287,9 +1303,11 @@
                                 <td>Tony Stark</td>
                                 <td>tony.stark@superhero.com</td>
                                 <td>Admin</td>
+                                <td>Xr8hQw!kN4</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 09:15</td>
                                 <td>2024-12-11 09:15:47</td>
+                                <td>2024-10-15</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1301,9 +1319,11 @@
                                 <td>Bruce Banner</td>
                                 <td>bruce.banner@superhero.com</td>
                                 <td>Admin</td>
+                                <td>Ym3pDs@jF7</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-10 16:45</td>
                                 <td>2024-12-10 16:45:38</td>
+                                <td>2024-11-05</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1315,9 +1335,11 @@
                                 <td>Scott Lang</td>
                                 <td>scott.lang@superhero.com</td>
                                 <td>Admin</td>
+                                <td>Bf6vKm$zH9</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 07:20</td>
                                 <td>2024-12-11 07:20:08</td>
+                                <td>2024-09-22</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1329,9 +1351,11 @@
                                 <td>Charles Xavier</td>
                                 <td>charles.xavier@superhero.com</td>
                                 <td>Admin</td>
+                                <td>Wn4rGx&tP8</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 08:00</td>
                                 <td>2024-12-11 08:00:51</td>
+                                <td>2024-10-30</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1343,9 +1367,11 @@
                                 <td>Clark Kent</td>
                                 <td>clark.kent@superhero.com</td>
                                 <td>Admin</td>
+                                <td>Zq7sLm!cJ2</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 09:45</td>
                                 <td>2024-12-11 09:45:23</td>
+                                <td>2023-12-15</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1357,9 +1383,11 @@
                                 <td>Natalia Romanova</td>
                                 <td>natalia.romanova@superhero.com</td>
                                 <td>HR</td>
+                                <td>Ht5bNx#wR3</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 08:15</td>
                                 <td>2024-12-11 08:15:33</td>
+                                <td>2024-11-18</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1371,9 +1399,11 @@
                                 <td>Bruce Wayne</td>
                                 <td>bruce.wayne@superhero.com</td>
                                 <td>Warehouse</td>
+                                <td>Pv9kFd@mS6</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 06:30</td>
                                 <td>2024-12-11 06:30:17</td>
+                                <td>2024-10-08</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1385,9 +1415,11 @@
                                 <td>Dick Grayson</td>
                                 <td>dick.grayson@superhero.com</td>
                                 <td>Warehouse</td>
+                                <td>Jt8xVn!gB4</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 06:45</td>
                                 <td>2024-12-11 06:45:31</td>
+                                <td>2024-11-12</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1399,9 +1431,11 @@
                                 <td>Barbara Gordon</td>
                                 <td>barbara.gordon@superhero.com</td>
                                 <td>Warehouse</td>
+                                <td>Qw2hMp$dY7</td>
                                 <td><span class="status-badge status-inactive">Inactive</span></td>
                                 <td>2024-12-09 18:20</td>
                                 <td>2024-12-09 18:20:45</td>
+                                <td>2024-09-14</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1413,9 +1447,11 @@
                                 <td>Selina Kyle</td>
                                 <td>selina.kyle@superhero.com</td>
                                 <td>Warehouse</td>
+                                <td>Lr6tBx#fK9</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 07:00</td>
                                 <td>2024-12-11 07:00:45</td>
+                                <td>2024-10-25</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1427,9 +1463,11 @@
                                 <td>Diana Prince</td>
                                 <td>diana.prince@superhero.com</td>
                                 <td>Accounting</td>
+                                <td>Vs3nZk@rH8</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 08:45</td>
                                 <td>2024-12-11 08:45:15</td>
+                                <td>2024-11-22</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1441,9 +1479,11 @@
                                 <td>Peter Parker</td>
                                 <td>peter.parker@superhero.com</td>
                                 <td>Accounting</td>
+                                <td>Cm9wTf!jL5</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 09:00</td>
                                 <td>2024-12-11 09:00:35</td>
+                                <td>2024-10-18</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1455,9 +1495,11 @@
                                 <td>Miles Morales</td>
                                 <td>miles.morales@superhero.com</td>
                                 <td>Accounting</td>
+                                <td>Nb4yGx&pQ1</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 08:50</td>
                                 <td>2024-12-11 08:50:28</td>
+                                <td>2024-09-29</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1469,9 +1511,11 @@
                                 <td>Gwen Stacy</td>
                                 <td>gwen.stacy@superhero.com</td>
                                 <td>Accounting</td>
+                                <td>Dt7rSm#vX6</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2024-12-11 09:10</td>
                                 <td>2024-12-11 09:10:12</td>
+                                <td>2024-11-01</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -2320,141 +2364,6 @@
                 <div style="margin-top: 32px; display: flex; gap: 12px; justify-content: flex-end;">
                     <button class="btn btn-secondary">↺ Reset to Default</button>
                     <button class="btn btn-primary">💾 Save Permissions</button>
-                </div>
-            </div>
-        </div>
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Role-Based Access Control</h2>
-                </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Role</th>
-                                <th>Users</th>
-                                <th>Permissions</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Admin</strong></td>
-                                <td>6</td>
-                                <td>Full System Access, User Management, Security Settings, All Logs</td>
-                                <td><span class="status-badge status-enabled">Enabled</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">✏️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>HR</strong></td>
-                                <td>1</td>
-                                <td>User Management, Employee Records, Access Logs</td>
-                                <td><span class="status-badge status-enabled">Enabled</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">✏️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Warehouse</strong></td>
-                                <td>4</td>
-                                <td>Inventory Management, Order Processing, Stock Reports</td>
-                                <td><span class="status-badge status-enabled">Enabled</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">✏️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><strong>Accounting</strong></td>
-                                <td>4</td>
-                                <td>Financial Reports, Invoice Management, Payment Processing</td>
-                                <td><span class="status-badge status-enabled">Enabled</span></td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">✏️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Permission Matrix</h2>
-                </div>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Module</th>
-                                <th>Admin</th>
-                                <th>HR</th>
-                                <th>Warehouse</th>
-                                <th>Accounting</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Dashboard</td>
-                                <td>✅ Full</td>
-                                <td>✅ Read</td>
-                                <td>✅ Read</td>
-                                <td>✅ Read</td>
-                            </tr>
-                            <tr>
-                                <td>User Management</td>
-                                <td>✅ Full</td>
-                                <td>✅ Full</td>
-                                <td>❌ None</td>
-                                <td>❌ None</td>
-                            </tr>
-                            <tr>
-                                <td>Security Settings</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                                <td>❌ None</td>
-                                <td>❌ None</td>
-                            </tr>
-                            <tr>
-                                <td>Inventory</td>
-                                <td>✅ Full</td>
-                                <td>❌ None</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                            </tr>
-                            <tr>
-                                <td>Orders</td>
-                                <td>✅ Full</td>
-                                <td>❌ None</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                            </tr>
-                            <tr>
-                                <td>Financial Reports</td>
-                                <td>✅ Full</td>
-                                <td>❌ None</td>
-                                <td>❌ None</td>
-                                <td>✅ Full</td>
-                            </tr>
-                            <tr>
-                                <td>System Logs</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                                <td>❌ None</td>
-                                <td>❌ None</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
