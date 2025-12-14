@@ -584,9 +584,7 @@
         }
 
         .nav-submenu {
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 0;
+            position: fixed;
             min-width: 280px;
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -598,7 +596,28 @@
             visibility: hidden;
             transform: translateY(-20px) scale(0.95);
             transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 1000;
+            z-index: 9999;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        /* Custom scrollbar for submenu */
+        .nav-submenu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .nav-submenu::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .nav-submenu::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .nav-submenu::-webkit-scrollbar-thumb:hover {
+            background: var(--success);
         }
 
         .nav-dropdown.open .nav-submenu {
@@ -3130,13 +3149,34 @@
         // Toggle dropdown menu
         function toggleDropdown() {
             const dropdown = document.getElementById('itAdminDropdown');
-            dropdown.classList.toggle('open');
+            const isOpen = dropdown.classList.contains('open');
             
-            // Close dropdown when clicking outside
-            if (dropdown.classList.contains('open')) {
+            if (!isOpen) {
+                // Calculate position
+                const btn = dropdown.querySelector('.nav-dropdown-btn');
+                const rect = btn.getBoundingClientRect();
+                const submenu = dropdown.querySelector('.nav-submenu');
+                
+                // Position submenu below button
+                submenu.style.top = (rect.bottom + 8) + 'px';
+                submenu.style.left = rect.left + 'px';
+                
+                // Check if submenu would go off bottom of screen
+                const submenuHeight = 320; // approximate height
+                if (rect.bottom + submenuHeight > window.innerHeight) {
+                    // Position above button instead
+                    submenu.style.top = (rect.top - submenuHeight - 8) + 'px';
+                }
+                
+                dropdown.classList.add('open');
+                
+                // Close dropdown when clicking outside
                 setTimeout(() => {
                     document.addEventListener('click', closeDropdownOutside);
                 }, 0);
+            } else {
+                dropdown.classList.remove('open');
+                document.removeEventListener('click', closeDropdownOutside);
             }
         }
 
@@ -3147,6 +3187,25 @@
                 document.removeEventListener('click', closeDropdownOutside);
             }
         }
+
+        // Update submenu position on scroll/resize
+        window.addEventListener('scroll', function() {
+            const dropdown = document.getElementById('itAdminDropdown');
+            if (dropdown && dropdown.classList.contains('open')) {
+                const btn = dropdown.querySelector('.nav-dropdown-btn');
+                const rect = btn.getBoundingClientRect();
+                const submenu = dropdown.querySelector('.nav-submenu');
+                submenu.style.top = (rect.bottom + 8) + 'px';
+                submenu.style.left = rect.left + 'px';
+            }
+        });
+
+        window.addEventListener('resize', function() {
+            const dropdown = document.getElementById('itAdminDropdown');
+            if (dropdown && dropdown.classList.contains('open')) {
+                dropdown.classList.remove('open');
+            }
+        });
 
         // Show section
         function showSection(sectionId) {
