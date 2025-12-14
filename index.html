@@ -1187,6 +1187,8 @@
 
         <nav>
             <button class="nav-btn active" onclick="showSection('dashboard')">Dashboard</button>
+            <button class="nav-btn" onclick="showSection('inventory')">Inventory Management</button>
+            <button class="nav-btn" onclick="showSection('orders')">Order Management</button>
             <button class="nav-btn" onclick="showSection('security')">Password & Security</button>
             <button class="nav-btn" onclick="showSection('users')">User Management</button>
             <button class="nav-btn" onclick="showSection('authorization')">Authorization</button>
@@ -1227,7 +1229,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">⚡ Featured Super Hero Equipment</h2>
+                    <h2 class="card-title">⚡ Featured Super Hero Equipment Orders</h2>
                     <span style="color: var(--text-secondary); font-size: 14px;">Popular items this month</span>
                 </div>
                 
@@ -1328,11 +1330,135 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div style="margin-top: 24px; text-align: center;">
-                    <button class="btn btn-primary" style="padding: 14px 32px;">🛒 View All Equipment</button>
+            <!-- Recent Orders -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">📦 Recent Orders (Last 5)</h2>
+                </div>
+                <div class="table-container" style="margin-top: 16px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ORD-2025-1247</strong></td>
+                                <td>Wayne Enterprises</td>
+                                <td>Vibranium Shield x 2</td>
+                                <td>$4,999,998</td>
+                                <td><span class="status-badge status-active">Shipped</span></td>
+                                <td>2025-01-11</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ORD-2025-1246</strong></td>
+                                <td>Stark Industries</td>
+                                <td>Arc Reactor MK-50 x 1</td>
+                                <td>$8,999,999</td>
+                                <td><span class="status-badge status-active">Processing</span></td>
+                                <td>2025-01-10</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ORD-2025-1245</strong></td>
+                                <td>Queens High School</td>
+                                <td>Web Shooter Pro x 5</td>
+                                <td>$749,995</td>
+                                <td><span class="status-badge status-active">Delivered</span></td>
+                                <td>2025-01-09</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ORD-2025-1244</strong></td>
+                                <td>Asgard Embassy</td>
+                                <td>Mjolnir Replica x 1</td>
+                                <td>$9,999,999</td>
+                                <td><span class="status-badge status-inactive">Cancelled</span></td>
+                                <td>2025-01-08</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ORD-2025-1243</strong></td>
+                                <td>S.H.I.E.L.D</td>
+                                <td>Quantum Processor x 3</td>
+                                <td>$46,499,997</td>
+                                <td><span class="status-badge status-active">Shipped</span></td>
+                                <td>2025-01-07</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+            <!-- Short Stock Alert -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">⚠️ Low Stock Alert</h2>
+                    <span style="color: var(--danger); font-size: 14px; font-weight: 600;">5 items below minimum threshold</span>
+                </div>
+                <div class="table-container" style="margin-top: 16px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SKU</th>
+                                <th>Product Name</th>
+                                <th>Current Stock</th>
+                                <th>Min. Required</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(255, 51, 102, 0.1);">
+                                <td><strong>SKU-019</strong></td>
+                                <td>Mjolnir Replica</td>
+                                <td style="color: var(--danger); font-weight: 700;">3</td>
+                                <td>10</td>
+                                <td><span class="status-badge" style="background: rgba(255, 51, 102, 0.2); color: var(--danger);">Critical</span></td>
+                                <td><button class="btn btn-danger" style="font-size: 12px; padding: 6px 12px;">Reorder Now</button></td>
+                            </tr>
+                            <tr style="background: rgba(255, 170, 0, 0.1);">
+                                <td><strong>SKU-037</strong></td>
+                                <td>Infinity Gauntlet Glove</td>
+                                <td style="color: var(--warning); font-weight: 700;">7</td>
+                                <td>15</td>
+                                <td><span class="status-badge" style="background: rgba(255, 170, 0, 0.2); color: var(--warning);">Low</span></td>
+                                <td><button class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">Reorder</button></td>
+                            </tr>
+                            <tr style="background: rgba(255, 170, 0, 0.1);">
+                                <td><strong>SKU-042</strong></td>
+                                <td>Pym Particles Canister</td>
+                                <td style="color: var(--warning); font-weight: 700;">8</td>
+                                <td>20</td>
+                                <td><span class="status-badge" style="background: rgba(255, 170, 0, 0.2); color: var(--warning);">Low</span></td>
+                                <td><button class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">Reorder</button></td>
+                            </tr>
+                            <tr style="background: rgba(255, 170, 0, 0.1);">
+                                <td><strong>SKU-028</strong></td>
+                                <td>Wakanda Battle Suit</td>
+                                <td style="color: var(--warning); font-weight: 700;">12</td>
+                                <td>25</td>
+                                <td><span class="status-badge" style="background: rgba(255, 170, 0, 0.2); color: var(--warning);">Low</span></td>
+                                <td><button class="btn btn-primary" style="font-size: 12px; padding: 6px 12px;">Reorder</button></td>
+                            </tr>
+                            <tr style="background: rgba(255, 51, 102, 0.1);">
+                                <td><strong>SKU-015</strong></td>
+                                <td>Repulsor Ray Gauntlet</td>
+                                <td style="color: var(--danger); font-weight: 700;">4</td>
+                                <td>15</td>
+                                <td><span class="status-badge" style="background: rgba(255, 51, 102, 0.2); color: var(--danger);">Critical</span></td>
+                                <td><button class="btn btn-danger" style="font-size: 12px; padding: 6px 12px;">Reorder Now</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
 
         <!-- Password & Security Section -->
@@ -1591,7 +1717,7 @@
                             <tr>
                                 <td>Natalia Romanova</td>
                                 <td>natalia.romanova@superhero.com</td>
-                                <td>HR</td>
+                                <td>Warehouse Manager</td>
                                 <td>Ht5bNx#wR3</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 08:15</td>
@@ -1606,7 +1732,7 @@
                             <tr>
                                 <td>Bruce Wayne</td>
                                 <td>bruce.wayne@superhero.com</td>
-                                <td>Warehouse</td>
+                                <td>Warehouse Supervisor</td>
                                 <td>Pv9kFd@mS6</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 06:30</td>
@@ -1621,7 +1747,7 @@
                             <tr>
                                 <td>Dick Grayson</td>
                                 <td>dick.grayson@superhero.com</td>
-                                <td>Warehouse</td>
+                                <td>Warehouse Supervisor</td>
                                 <td>Jt8xVn!gB4</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 06:45</td>
@@ -1636,7 +1762,7 @@
                             <tr>
                                 <td>Barbara Gordon</td>
                                 <td>barbara.gordon@superhero.com</td>
-                                <td>Warehouse</td>
+                                <td>Warehouse Supervisor</td>
                                 <td>Qw2hMp$dY7</td>
                                 <td><span class="status-badge status-inactive">Inactive</span></td>
                                 <td>2025-01-09 18:20</td>
@@ -1651,7 +1777,7 @@
                             <tr>
                                 <td>Selina Kyle</td>
                                 <td>selina.kyle@superhero.com</td>
-                                <td>Warehouse</td>
+                                <td>Warehouse Supervisor</td>
                                 <td>Lr6tBx#fK9</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 07:00</td>
@@ -1666,7 +1792,7 @@
                             <tr>
                                 <td>Diana Prince</td>
                                 <td>diana.prince@superhero.com</td>
-                                <td>Accounting</td>
+                                <td>Shipping Coordinator</td>
                                 <td>Vs3nZk@rH8</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 08:45</td>
@@ -1681,7 +1807,7 @@
                             <tr>
                                 <td>Peter Parker</td>
                                 <td>peter.parker@superhero.com</td>
-                                <td>Accounting</td>
+                                <td>Shipping Coordinator</td>
                                 <td>Cm9wTf!jL5</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 09:00</td>
@@ -1696,7 +1822,7 @@
                             <tr>
                                 <td>Miles Morales</td>
                                 <td>miles.morales@superhero.com</td>
-                                <td>Accounting</td>
+                                <td>Shipping Coordinator</td>
                                 <td>Nb4yGx&pQ1</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 08:50</td>
@@ -1711,7 +1837,7 @@
                             <tr>
                                 <td>Gwen Stacy</td>
                                 <td>gwen.stacy@superhero.com</td>
-                                <td>Accounting</td>
+                                <td>Shipping Coordinator</td>
                                 <td>Dt7rSm#vX6</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>2025-01-11 09:10</td>
@@ -1759,9 +1885,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>HR</strong></td>
+                                <td><strong>Warehouse Manager</strong></td>
                                 <td>1</td>
-                                <td>User Management, Employee Records, Access Logs</td>
+                                <td>User Management, Inventory Control, Order Approval, System Reports</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -1770,9 +1896,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Warehouse</strong></td>
+                                <td><strong>Warehouse Supervisor</strong></td>
                                 <td>4</td>
-                                <td>Inventory Management, Order Processing, Stock Reports</td>
+                                <td>Inventory Management, Order Processing, Stock Management, Warehouse Logs</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -1781,9 +1907,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Accounting</strong></td>
+                                <td><strong>Shipping Coordinator</strong></td>
                                 <td>4</td>
-                                <td>Financial Reports, Invoice Management, Payment Processing</td>
+                                <td>Order Fulfillment, Shipping Management, Tracking Reports, Customer Updates</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -1817,9 +1943,9 @@
                             <tr>
                                 <th>Module</th>
                                 <th>Admin</th>
-                                <th>HR</th>
-                                <th>Warehouse</th>
-                                <th>Accounting</th>
+                                <th>Warehouse Manager</th>
+                                <th>Warehouse Supervisor</th>
+                                <th>Shipping Coordinator</th>
                                 <th>Auditor</th>
                             </tr>
                         </thead>
@@ -1827,7 +1953,7 @@
                             <tr>
                                 <td>Dashboard</td>
                                 <td>✅ Full</td>
-                                <td>✅ Read</td>
+                                <td>✅ Full</td>
                                 <td>✅ Read</td>
                                 <td>✅ Read</td>
                                 <td>👁️ Read</td>
@@ -1849,26 +1975,26 @@
                                 <td>👁️ Read</td>
                             </tr>
                             <tr>
-                                <td>Inventory</td>
+                                <td>Inventory Management</td>
                                 <td>✅ Full</td>
-                                <td>❌ None</td>
                                 <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                                <td>👁️ Read</td>
-                            </tr>
-                            <tr>
-                                <td>Orders</td>
-                                <td>✅ Full</td>
-                                <td>❌ None</td>
                                 <td>✅ Full</td>
                                 <td>👁️ Read</td>
                                 <td>👁️ Read</td>
                             </tr>
                             <tr>
-                                <td>Financial Reports</td>
+                                <td>Order Management</td>
                                 <td>✅ Full</td>
-                                <td>❌ None</td>
-                                <td>❌ None</td>
+                                <td>✅ Full</td>
+                                <td>✅ Full</td>
+                                <td>✅ Full</td>
+                                <td>👁️ Read</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping & Logistics</td>
+                                <td>✅ Full</td>
+                                <td>👁️ Read</td>
+                                <td>👁️ Read</td>
                                 <td>✅ Full</td>
                                 <td>👁️ Read</td>
                             </tr>
@@ -2917,71 +3043,71 @@
             // January 2025
             { date: '2025-01-11 09:45:23', type: 'LOGIN', user: 'Clark Kent', role: 'System Admin', details: 'IP: 192.168.1.105 | Location: Metropolis Office | Device: Chrome/Windows' },
             { date: '2025-01-11 09:15:47', type: 'LOGIN', user: 'Tony Stark', role: 'IT Head', details: 'IP: 192.168.1.87 | Location: Stark Tower | Device: Safari/MacOS' },
-            { date: '2025-01-11 09:10:12', type: 'LOGIN', user: 'Gwen Stacy', role: 'Account Staff', details: 'IP: 192.168.1.143 | Location: Finance Department | Device: Firefox/Windows' },
-            { date: '2025-01-11 09:00:35', type: 'LOGIN', user: 'Peter Parker', role: 'Account Staff', details: 'IP: 192.168.1.142 | Location: Finance Department | Device: Chrome/Windows' },
-            { date: '2025-01-11 08:50:28', type: 'LOGIN', user: 'Miles Morales', role: 'Account Staff', details: 'IP: 192.168.1.141 | Location: Finance Department | Device: Edge/Windows' },
-            { date: '2025-01-11 08:45:15', type: 'LOGIN', user: 'Diana Prince', role: 'Account Manager', details: 'IP: 192.168.1.140 | Location: Finance Department | Device: Chrome/Windows' },
+            { date: '2025-01-11 09:10:12', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Finance Department | Device: Firefox/Windows' },
+            { date: '2025-01-11 09:00:35', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Finance Department | Device: Chrome/Windows' },
+            { date: '2025-01-11 08:50:28', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Finance Department | Device: Edge/Windows' },
+            { date: '2025-01-11 08:45:15', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Finance Department | Device: Chrome/Windows' },
             { date: '2025-01-11 08:30:42', type: 'LOGIN', user: 'Steve Roger', role: 'CEO', details: 'IP: 192.168.1.10 | Location: Executive Office | Device: Safari/iPad' },
-            { date: '2025-01-11 08:25:18', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Modified Order #WH-2025-1547 | Changed: Quantity from 500 to 750 units | Item: Arc Reactor Shields' },
-            { date: '2025-01-11 08:15:33', type: 'LOGIN', user: 'Natalia Romanova', role: 'HR', details: 'IP: 192.168.1.95 | Location: HR Department | Device: Chrome/Windows' },
-            { date: '2025-01-11 07:00:45', type: 'LOGIN', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'IP: 192.168.1.135 | Location: Warehouse Floor | Device: Chrome/Android' },
+            { date: '2025-01-11 08:25:18', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-1547 | Changed: Quantity from 500 to 750 units | Item: Arc Reactor Shields' },
+            { date: '2025-01-11 08:15:33', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Supervisor', details: 'IP: 192.168.1.95 | Location: HR Department | Device: Chrome/Windows' },
+            { date: '2025-01-11 07:00:45', type: 'LOGIN', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'IP: 192.168.1.135 | Location: Warehouse Floor | Device: Chrome/Android' },
             { date: '2025-01-10 18:30:55', type: 'LOGOUT', user: 'Tony Stark', role: 'IT Head', details: 'Session Duration: 9h 15m | IP: 192.168.1.87' },
-            { date: '2025-01-10 17:15:22', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Cancelled Order #WH-2025-1545 | Item: Repulsor Gauntlets | Quantity: 100 units' },
+            { date: '2025-01-10 17:15:22', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Cancelled Order #WH-2025-1545 | Item: Repulsor Gauntlets | Quantity: 100 units' },
             
             // February 2025
             { date: '2025-02-15 10:30:12', type: 'LOGIN', user: 'Bruce Banner', role: 'Developer', details: 'IP: 192.168.1.77 | Location: Development Lab | Device: Firefox/Linux' },
             { date: '2025-02-15 14:22:45', type: 'FAILED LOGIN', user: 'barbara.gordon@superhero.com', role: 'N/A', details: 'IP: 192.168.1.132 | Reason: Invalid password (Attempt 1 of 5)' },
-            { date: '2025-02-20 11:15:30', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'Created new Order #WH-2025-2102 | Item: Vibranium Shields | Quantity: 300 units' },
+            { date: '2025-02-20 11:15:30', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Created new Order #WH-2025-2102 | Item: Vibranium Shields | Quantity: 300 units' },
             
             // March 2025
             { date: '2025-03-05 09:12:33', type: 'LOGIN', user: 'Scott Lang', role: 'Developer', details: 'IP: 192.168.1.78 | Location: Development Lab | Device: Chrome/MacOS' },
-            { date: '2025-03-12 16:45:21', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Modified Order #WH-2025-3156 | Changed: Delivery date moved forward by 3 days' },
+            { date: '2025-03-12 16:45:21', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-3156 | Changed: Delivery date moved forward by 3 days' },
             { date: '2025-03-18 08:30:14', type: 'LOGIN', user: 'Charles Xavier', role: 'Security Officer', details: 'IP: 192.168.1.50 | Location: Security Operations | Device: Chrome/Linux' },
             
             // April 2025
             { date: '2025-04-02 10:55:42', type: 'FAILED LOGIN', user: 'test.user@superhero.com', role: 'N/A', details: 'IP: 203.45.67.89 | Reason: User does not exist' },
-            { date: '2025-04-10 13:20:18', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'Updated Order #WH-2025-4089 | Changed: Added rush delivery flag' },
+            { date: '2025-04-10 13:20:18', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Updated Order #WH-2025-4089 | Changed: Added rush delivery flag' },
             { date: '2025-04-22 15:40:55', type: 'LOGOUT', user: 'Steve Roger', role: 'CEO', details: 'Session Duration: 7h 10m | IP: 192.168.1.10' },
             
             // May 2025
-            { date: '2025-05-08 09:15:27', type: 'LOGIN', user: 'Diana Prince', role: 'Account Manager', details: 'IP: 192.168.1.140 | Location: Finance Department | Device: Chrome/Windows' },
-            { date: '2025-05-15 11:33:44', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Created bulk order #WH-2025-5234 | Item: Stark Tech Components | Quantity: 1000 units' },
+            { date: '2025-05-08 09:15:27', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Finance Department | Device: Chrome/Windows' },
+            { date: '2025-05-15 11:33:44', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Created bulk order #WH-2025-5234 | Item: Stark Tech Components | Quantity: 1000 units' },
             { date: '2025-05-20 14:22:16', type: 'FAILED LOGIN', user: 'admin', role: 'N/A', details: 'IP: 198.51.100.42 | Reason: Invalid password (Attempt 3 of 5)' },
             
             // June 2025
-            { date: '2025-06-03 08:45:39', type: 'LOGIN', user: 'Peter Parker', role: 'Account Staff', details: 'IP: 192.168.1.142 | Location: Finance Department | Device: Chrome/Windows' },
-            { date: '2025-06-12 10:18:52', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'Modified Order #WH-2025-6145 | Changed: Shipping address updated' },
+            { date: '2025-06-03 08:45:39', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Finance Department | Device: Chrome/Windows' },
+            { date: '2025-06-12 10:18:52', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-6145 | Changed: Shipping address updated' },
             { date: '2025-06-25 16:55:23', type: 'LOGOUT', user: 'Tony Stark', role: 'IT Head', details: 'Session Duration: 8h 40m | IP: 192.168.1.87' },
             
             // July 2025
-            { date: '2025-07-07 09:22:41', type: 'LOGIN', user: 'Miles Morales', role: 'Account Staff', details: 'IP: 192.168.1.141 | Location: Finance Department | Device: Edge/Windows' },
-            { date: '2025-07-14 13:47:28', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Cancelled Order #WH-2025-7203 | Reason: Duplicate order' },
-            { date: '2025-07-28 11:05:17', type: 'LOGIN', user: 'Gwen Stacy', role: 'Account Staff', details: 'IP: 192.168.1.143 | Location: Finance Department | Device: Firefox/Windows' },
+            { date: '2025-07-07 09:22:41', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Finance Department | Device: Edge/Windows' },
+            { date: '2025-07-14 13:47:28', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Cancelled Order #WH-2025-7203 | Reason: Duplicate order' },
+            { date: '2025-07-28 11:05:17', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Finance Department | Device: Firefox/Windows' },
             
             // August 2025
             { date: '2025-08-05 10:12:33', type: 'FAILED LOGIN', user: 'auditor01', role: 'N/A', details: 'IP: 192.168.1.200 | Reason: Account not yet activated' },
-            { date: '2025-08-12 14:38:19', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'Created Order #WH-2025-8334 | Item: Web Shooter Components | Quantity: 150 units' },
-            { date: '2025-08-20 09:44:52', type: 'LOGIN', user: 'Natalia Romanova', role: 'HR', details: 'IP: 192.168.1.95 | Location: HR Department | Device: Chrome/Windows' },
+            { date: '2025-08-12 14:38:19', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Created Order #WH-2025-8334 | Item: Web Shooter Components | Quantity: 150 units' },
+            { date: '2025-08-20 09:44:52', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Supervisor', details: 'IP: 192.168.1.95 | Location: HR Department | Device: Chrome/Windows' },
             
             // September 2025
             { date: '2025-09-02 08:55:14', type: 'LOGIN', user: 'Bruce Banner', role: 'Developer', details: 'IP: 192.168.1.77 | Location: Development Lab | Device: Firefox/Linux' },
-            { date: '2025-09-15 12:28:47', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Modified Order #WH-2025-9187 | Changed: Priority level upgraded to URGENT' },
+            { date: '2025-09-15 12:28:47', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-9187 | Changed: Priority level upgraded to URGENT' },
             { date: '2025-09-22 17:15:33', type: 'LOGOUT', user: 'Clark Kent', role: 'System Admin', details: 'Session Duration: 8h 20m | IP: 192.168.1.105' },
             
             // October 2025
             { date: '2025-10-08 09:33:26', type: 'LOGIN', user: 'Scott Lang', role: 'Developer', details: 'IP: 192.168.1.78 | Location: Development Lab | Device: Chrome/MacOS' },
-            { date: '2025-10-16 11:42:55', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'Updated Order #WH-2025-10245 | Changed: Added special handling instructions' },
+            { date: '2025-10-16 11:42:55', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Updated Order #WH-2025-10245 | Changed: Added special handling instructions' },
             { date: '2025-10-25 15:20:18', type: 'FAILED LOGIN', user: 'admin', role: 'N/A', details: 'IP: 172.16.254.1 | Reason: Invalid password (Attempt 2 of 5)' },
             
             // November 2025
             { date: '2025-11-04 08:18:44', type: 'LOGIN', user: 'Charles Xavier', role: 'Security Officer', details: 'IP: 192.168.1.50 | Location: Security Operations | Device: Chrome/Linux' },
-            { date: '2025-11-12 13:52:31', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Created large order #WH-2025-11456 | Item: Quantum Processors | Quantity: 500 units' },
+            { date: '2025-11-12 13:52:31', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Created large order #WH-2025-11456 | Item: Quantum Processors | Quantity: 500 units' },
             { date: '2025-11-20 10:35:22', type: 'LOGIN', user: 'Steve Roger', role: 'CEO', details: 'IP: 192.168.1.10 | Location: Executive Office | Device: Safari/iPad' },
             
             // December 2025
             { date: '2025-12-03 09:25:16', type: 'LOGIN', user: 'Tony Stark', role: 'IT Head', details: 'IP: 192.168.1.87 | Location: Stark Tower | Device: Safari/MacOS' },
-            { date: '2025-12-10 14:15:42', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'Modified Order #WH-2025-12389 | Changed: Split shipment into 3 deliveries' },
-            { date: '2025-12-15 16:48:29', type: 'LOGOUT', user: 'Diana Prince', role: 'Account Manager', details: 'Session Duration: 7h 03m | IP: 192.168.1.140' }
+            { date: '2025-12-10 14:15:42', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-12389 | Changed: Split shipment into 3 deliveries' },
+            { date: '2025-12-15 16:48:29', type: 'LOGOUT', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'Session Duration: 7h 03m | IP: 192.168.1.140' }
         ];
 
         // Filter and display activity logs
