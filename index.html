@@ -3419,15 +3419,27 @@ const orderData = [
         // Activity Log Data for entire year 2025
         const activityLogData = [
             // January 2025
+            // Additional realistic activity entries for 2025
+{ date: '2025-01-11 10:30:15', type: 'ORDER CHANGE', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'Approved Order #WH-2025-1247 | Item: Vibranium Shield x2 | Customer: Wayne Enterprises' },
+{ date: '2025-01-11 09:45:22', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Shipping Department | Device: Chrome/Windows' },
+{ date: '2025-01-11 09:30:11', type: 'ORDER CHANGE', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'Updated tracking for Order #WH-2025-1245 | Tracking: SH-2025-5645 | Status: In Transit' },
+{ date: '2025-01-10 15:20:33', type: 'ORDER CHANGE', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'Reviewed inventory levels | Flagged 5 items for reorder | Generated purchase orders' },
+{ date: '2025-01-10 14:15:45', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Completed stock count for Sector A | Updated inventory quantities | 47 items verified' },
+{ date: '2025-01-10 11:30:28', type: 'ORDER CHANGE', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'Coordinated shipment pickup for Order #WH-2025-1243 | Carrier: FedEx Priority | ETA: 2 days' },
+{ date: '2025-01-09 16:40:19', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Processed incoming delivery | SKU-001 to SKU-015 | Updated stock levels | 25 units received' },
+{ date: '2025-01-09 13:25:51', type: 'ORDER CHANGE', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'Confirmed delivery for Order #WH-2025-1245 | Customer signature received | Closed order' },
+{ date: '2025-01-08 10:15:37', type: 'ORDER CHANGE', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'Authorized emergency reorder | SKU-019 Mjolnir Replica | Quantity: 15 units | Approved budget: $149,999,985' },
+{ date: '2025-01-08 08:55:42', type: 'ORDER CHANGE', user: 'Barbara Gordon', role: 'Warehouse Supervisor', details: 'Quality inspection completed | Order #WH-2025-1246 | All items passed QC | Ready for shipping' },
+
             { date: '2025-01-11 09:45:23', type: 'LOGIN', user: 'Clark Kent', role: 'System Admin', details: 'IP: 192.168.1.105 | Location: Metropolis Office | Device: Chrome/Windows' },
             { date: '2025-01-11 09:15:47', type: 'LOGIN', user: 'Tony Stark', role: 'IT Head', details: 'IP: 192.168.1.87 | Location: Stark Tower | Device: Safari/MacOS' },
-            { date: '2025-01-11 09:10:12', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Finance Department | Device: Firefox/Windows' },
-            { date: '2025-01-11 09:00:35', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Finance Department | Device: Chrome/Windows' },
-            { date: '2025-01-11 08:50:28', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Finance Department | Device: Edge/Windows' },
-            { date: '2025-01-11 08:45:15', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Finance Department | Device: Chrome/Windows' },
+            { date: '2025-01-11 09:10:12', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Shipping Department | Device: Firefox/Windows' },
+            { date: '2025-01-11 09:00:35', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Shipping Department | Device: Chrome/Windows' },
+            { date: '2025-01-11 08:50:28', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Shipping Department | Device: Edge/Windows' },
+            { date: '2025-01-11 08:45:15', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Shipping Department | Device: Chrome/Windows' },
             { date: '2025-01-11 08:30:42', type: 'LOGIN', user: 'Steve Roger', role: 'CEO', details: 'IP: 192.168.1.10 | Location: Executive Office | Device: Safari/iPad' },
             { date: '2025-01-11 08:25:18', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-1547 | Changed: Quantity from 500 to 750 units | Item: Arc Reactor Shields' },
-            { date: '2025-01-11 08:15:33', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Supervisor', details: 'IP: 192.168.1.95 | Location: HR Department | Device: Chrome/Windows' },
+            { date: '2025-01-11 08:15:33', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'IP: 192.168.1.95 | Location: Warehouse Office | Device: Chrome/Windows' },
             { date: '2025-01-11 07:00:45', type: 'LOGIN', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'IP: 192.168.1.135 | Location: Warehouse Floor | Device: Chrome/Android' },
             { date: '2025-01-10 18:30:55', type: 'LOGOUT', user: 'Tony Stark', role: 'IT Head', details: 'Session Duration: 9h 15m | IP: 192.168.1.87' },
             { date: '2025-01-10 17:15:22', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Cancelled Order #WH-2025-1545 | Item: Repulsor Gauntlets | Quantity: 100 units' },
@@ -3448,24 +3460,24 @@ const orderData = [
             { date: '2025-04-22 15:40:55', type: 'LOGOUT', user: 'Steve Roger', role: 'CEO', details: 'Session Duration: 7h 10m | IP: 192.168.1.10' },
             
             // May 2025
-            { date: '2025-05-08 09:15:27', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Finance Department | Device: Chrome/Windows' },
+            { date: '2025-05-08 09:15:27', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Shipping Department | Device: Chrome/Windows' },
             { date: '2025-05-15 11:33:44', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Created bulk order #WH-2025-5234 | Item: Stark Tech Components | Quantity: 1000 units' },
             { date: '2025-05-20 14:22:16', type: 'FAILED LOGIN', user: 'admin', role: 'N/A', details: 'IP: 198.51.100.42 | Reason: Invalid password (Attempt 3 of 5)' },
             
             // June 2025
-            { date: '2025-06-03 08:45:39', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Finance Department | Device: Chrome/Windows' },
+            { date: '2025-06-03 08:45:39', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Shipping Department | Device: Chrome/Windows' },
             { date: '2025-06-12 10:18:52', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-6145 | Changed: Shipping address updated' },
             { date: '2025-06-25 16:55:23', type: 'LOGOUT', user: 'Tony Stark', role: 'IT Head', details: 'Session Duration: 8h 40m | IP: 192.168.1.87' },
             
             // July 2025
-            { date: '2025-07-07 09:22:41', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Finance Department | Device: Edge/Windows' },
+            { date: '2025-07-07 09:22:41', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Shipping Department | Device: Edge/Windows' },
             { date: '2025-07-14 13:47:28', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Cancelled Order #WH-2025-7203 | Reason: Duplicate order' },
-            { date: '2025-07-28 11:05:17', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Finance Department | Device: Firefox/Windows' },
+            { date: '2025-07-28 11:05:17', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Shipping Department | Device: Firefox/Windows' },
             
             // August 2025
             { date: '2025-08-05 10:12:33', type: 'FAILED LOGIN', user: 'auditor01', role: 'N/A', details: 'IP: 192.168.1.200 | Reason: Account not yet activated' },
             { date: '2025-08-12 14:38:19', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Created Order #WH-2025-8334 | Item: Web Shooter Components | Quantity: 150 units' },
-            { date: '2025-08-20 09:44:52', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Supervisor', details: 'IP: 192.168.1.95 | Location: HR Department | Device: Chrome/Windows' },
+            { date: '2025-08-20 09:44:52', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'IP: 192.168.1.95 | Location: Warehouse Office | Device: Chrome/Windows' },
             
             // September 2025
             { date: '2025-09-02 08:55:14', type: 'LOGIN', user: 'Bruce Banner', role: 'Developer', details: 'IP: 192.168.1.77 | Location: Development Lab | Device: Firefox/Linux' },
