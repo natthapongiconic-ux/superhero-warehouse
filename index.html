@@ -1051,8 +1051,8 @@
             </form>
             
             <div class="login-footer">
-                <p>Test Accounts: admin, audit01-audit05</p>
-                <p style="margin-top: 8px; font-size: 11px;">© 2024 Super Hero Company Limited. All rights reserved.</p>
+                <p>Test Accounts: admin, auditor01-auditor05</p>
+                <p style="margin-top: 8px; font-size: 11px;">© 2025 Super Hero Company Limited. All rights reserved.</p>
             </div>
         </div>
     </div>
@@ -1576,6 +1576,17 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td><strong>Auditor</strong></td>
+                                <td>5</td>
+                                <td>Read-Only Access to All Modules, Activity Logs, Change Logs</td>
+                                <td><span class="status-badge status-enabled">Enabled</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-edit">✏️</button>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1594,6 +1605,7 @@
                                 <th>HR</th>
                                 <th>Warehouse</th>
                                 <th>Accounting</th>
+                                <th>Auditor</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1603,6 +1615,7 @@
                                 <td>✅ Read</td>
                                 <td>✅ Read</td>
                                 <td>✅ Read</td>
+                                <td>👁️ Read</td>
                             </tr>
                             <tr>
                                 <td>User Management</td>
@@ -1610,6 +1623,7 @@
                                 <td>✅ Full</td>
                                 <td>❌ None</td>
                                 <td>❌ None</td>
+                                <td>👁️ Read</td>
                             </tr>
                             <tr>
                                 <td>Security Settings</td>
@@ -1617,12 +1631,14 @@
                                 <td>👁️ Read</td>
                                 <td>❌ None</td>
                                 <td>❌ None</td>
+                                <td>👁️ Read</td>
                             </tr>
                             <tr>
                                 <td>Inventory</td>
                                 <td>✅ Full</td>
                                 <td>❌ None</td>
                                 <td>✅ Full</td>
+                                <td>👁️ Read</td>
                                 <td>👁️ Read</td>
                             </tr>
                             <tr>
@@ -1631,6 +1647,7 @@
                                 <td>❌ None</td>
                                 <td>✅ Full</td>
                                 <td>👁️ Read</td>
+                                <td>👁️ Read</td>
                             </tr>
                             <tr>
                                 <td>Financial Reports</td>
@@ -1638,6 +1655,7 @@
                                 <td>❌ None</td>
                                 <td>❌ None</td>
                                 <td>✅ Full</td>
+                                <td>👁️ Read</td>
                             </tr>
                             <tr>
                                 <td>System Logs</td>
@@ -1645,6 +1663,7 @@
                                 <td>👁️ Read</td>
                                 <td>❌ None</td>
                                 <td>❌ None</td>
+                                <td>👁️ Read</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2628,93 +2647,22 @@
                     <h2 class="card-title">Application Change Log</h2>
                 </div>
                 <div class="search-bar">
-                    <input type="date" class="form-input" value="2025-01-01">
-                    <input type="date" class="form-input" value="2025-01-11">
-                    <select class="form-select">
-                        <option>All Changes</option>
-                        <option>Configuration</option>
-                        <option>Program Update</option>
-                        <option>Security Patch</option>
+                    <input type="date" id="changelogStartDate" class="form-input" value="2025-01-01">
+                    <input type="date" id="changelogEndDate" class="form-input" value="2025-12-31">
+                    <select id="changelogTypeFilter" class="form-select">
+                        <option value="">All Changes</option>
+                        <option value="Configuration">Configuration</option>
+                        <option value="Program Update">Program Update</option>
+                        <option value="Security Patch">Security Patch</option>
+                        <option value="Database">Database</option>
                     </select>
-                    <button class="btn btn-primary">🔍 Search</button>
+                    <input type="text" id="changelogSearch" class="form-input" placeholder="🔍 Search by keyword..." style="min-width: 200px;">
+                    <button class="btn btn-primary" onclick="filterChangeLogs()">🔍 Search</button>
+                    <button class="btn btn-primary" onclick="exportChangeLog()">📊 Export</button>
                 </div>
 
-                <div class="log-entry">
-                    <div class="log-header">
-                        <span class="log-timestamp">2025-01-10 22:30:00</span>
-                        <span class="log-type log-type-change">SECURITY PATCH</span>
-                    </div>
-                    <div class="log-content">
-                        <strong>Security Update v3.8.2</strong> - Critical security patch applied
-                    </div>
-                    <div class="log-details">
-                        Applied by: Tony Stark (IT Head) | Patch ID: SEC-2024-12-A | Details: Fixed SQL injection vulnerability in inventory search module, Updated authentication token generation to use stronger cryptographic algorithm, Patched cross-site scripting (XSS) vulnerability in user profile section | Status: Successfully deployed | Affected Modules: Authentication, Inventory Search, User Management | Downtime: 15 minutes
-                    </div>
-                </div>
-
-                <div class="log-entry">
-                    <div class="log-header">
-                        <span class="log-timestamp">2025-01-08 18:00:00</span>
-                        <span class="log-type log-type-change">PROGRAM CHANGE</span>
-                    </div>
-                    <div class="log-content">
-                        <strong>Application Update v2.15.0</strong> - Major feature release
-                    </div>
-                    <div class="log-details">
-                        Deployed by: Bruce Banner (Developer) | Build: WMS-2025-01-08-PROD | New Features: Advanced inventory forecasting with AI predictions, Real-time stock level monitoring dashboard, Automated reorder point calculations, Enhanced reporting with customizable templates | Improvements: Optimized database queries for 40% faster load times, Improved mobile responsive design, Updated user interface with modern styling | Status: Successfully deployed | Testing: Passed all QA checks
-                    </div>
-                </div>
-
-                <div class="log-entry">
-                    <div class="log-header">
-                        <span class="log-timestamp">2025-01-05 14:30:00</span>
-                        <span class="log-type log-type-change">CONFIGURATION</span>
-                    </div>
-                    <div class="log-content">
-                        <strong>Password Policy Update</strong> - Enhanced security configuration
-                    </div>
-                    <div class="log-details">
-                        Modified by: Charles Xavier (Security Officer) | Changes: Increased minimum password length from 8 to 12 characters, Enabled mandatory Multi-Factor Authentication (MFA) for all admin roles, Reduced idle session timeout from 30 to 15 minutes, Implemented password history check (last 5 passwords), Updated password complexity requirements to include special characters | Reason: Compliance with new cybersecurity standards | Approval: Steve Roger (CEO) | Effective Date: 2024-12-06 00:00:00
-                    </div>
-                </div>
-
-                <div class="log-entry">
-                    <div class="log-header">
-                        <span class="log-timestamp">2025-01-03 09:15:00</span>
-                        <span class="log-type log-type-change">PROGRAM CHANGE</span>
-                    </div>
-                    <div class="log-content">
-                        <strong>Database Migration v2.14.5</strong> - Infrastructure upgrade
-                    </div>
-                    <div class="log-details">
-                        Executed by: Scott Lang (Developer) | Migration ID: DB-MIG-2025-01-03 | Details: Migrated from MySQL 5.7 to MySQL 8.0 for improved performance and security, Optimized table indexes for faster query execution, Implemented database sharding for better scalability, Added read replicas for load distribution | Performance Impact: 50% faster query response times, 99.99% uptime maintained | Backup: Full backup completed before migration | Rollback Plan: Tested and verified | Status: Migration completed successfully with zero data loss
-                    </div>
-                </div>
-
-                <div class="log-entry">
-                    <div class="log-header">
-                        <span class="log-timestamp">2025-01-01 16:45:00</span>
-                        <span class="log-type log-type-change">CONFIGURATION</span>
-                    </div>
-                    <div class="log-content">
-                        <strong>SSL/TLS Certificate Renewal</strong> - Security certificate update
-                    </div>
-                    <div class="log-details">
-                        Updated by: Tony Stark (IT Head) | Certificate Authority: DigiCert | Details: Renewed SSL/TLS certificate for superhero.com domain, Upgraded from TLS 1.2 to TLS 1.3 for enhanced security, Implemented HTTP Strict Transport Security (HSTS), Added certificate pinning for mobile applications | Valid Until: 2025-12-01 | Certificate Type: Extended Validation (EV) SSL | Encryption: 256-bit AES | Status: Certificate successfully installed and activated | Verification: All endpoints responding with valid certificate
-                    </div>
-                </div>
-
-                <div class="log-entry">
-                    <div class="log-header">
-                        <span class="log-timestamp">2024-12-28 10:00:00</span>
-                        <span class="log-type log-type-change">SECURITY PATCH</span>
-                    </div>
-                    <div class="log-content">
-                        <strong>Emergency Security Hotfix v3.8.1</strong> - Critical vulnerability fix
-                    </div>
-                    <div class="log-details">
-                        Applied by: Charles Xavier (Security Officer) | CVE ID: CVE-2024-12345 | Severity: Critical (9.8/10) | Details: Fixed zero-day vulnerability in file upload module that could allow remote code execution, Updated file validation and sanitization procedures, Implemented strict file type checking and size limits, Added malware scanning for all uploaded files | Affected Versions: v3.7.x to v3.8.0 | Status: Hotfix successfully deployed | Testing: Security scan completed with no vulnerabilities detected | Notification: All users notified via email
-                    </div>
+                <div id="changelogResults">
+                    <!-- Change logs will be dynamically filtered here -->
                 </div>
             </div>
         </div>
@@ -2724,12 +2672,26 @@
         // Login credentials
         const validCredentials = {
             'admin': 'OK!See001',
-            'audit01': 'P@ssw0rd779',
-            'audit02': 'P@ssw0rd423',
-            'audit03': 'P@ssw0rd221',
-            'audit04': 'P@ssw0rd726',
-            'audit05': 'P@ssw0rd115'
+            'auditor01': 'P@ssw0rd779',
+            'auditor02': 'P@ssw0rd423',
+            'auditor03': 'P@ssw0rd221',
+            'auditor04': 'P@ssw0rd726',
+            'auditor05': 'P@ssw0rd115'
         };
+
+        // User roles for login
+        const userRoles = {
+            'admin': 'Admin',
+            'auditor01': 'Auditor',
+            'auditor02': 'Auditor',
+            'auditor03': 'Auditor',
+            'auditor04': 'Auditor',
+            'auditor05': 'Auditor'
+        };
+
+        // Current logged in user
+        let currentUser = '';
+        let currentRole = '';
 
         // Handle login
         function handleLogin(event) {
@@ -2741,6 +2703,9 @@
             
             if (validCredentials[username] && validCredentials[username] === password) {
                 // Successful login
+                currentUser = username;
+                currentRole = userRoles[username];
+                
                 errorElement.classList.remove('show');
                 document.getElementById('loginPage').classList.add('hidden');
                 document.getElementById('mainApp').classList.add('active');
@@ -2756,13 +2721,34 @@
                     userRole.textContent = username;
                 } else {
                     userAvatar.textContent = username.substring(0, 2).toUpperCase();
-                    userName.textContent = 'Audit User';
+                    userName.textContent = currentRole + ' User';
                     userRole.textContent = username;
                 }
+                
+                // Apply role-based restrictions
+                applyRoleRestrictions();
             } else {
                 // Failed login
                 errorElement.classList.add('show');
                 document.getElementById('password').value = '';
+            }
+        }
+
+        // Apply role-based restrictions
+        function applyRoleRestrictions() {
+            if (currentRole === 'Auditor') {
+                // Hide edit/delete buttons
+                document.querySelectorAll('.btn-edit, .btn-delete, .btn-primary').forEach(btn => {
+                    if (!btn.textContent.includes('Export') && !btn.textContent.includes('Search')) {
+                        btn.style.display = 'none';
+                    }
+                });
+                
+                // Disable all inputs and selects
+                document.querySelectorAll('input:not([type="date"]):not([type="text"][placeholder*="Search"]), select:not(.form-select), .toggle-switch, .custom-checkbox').forEach(elem => {
+                    elem.style.pointerEvents = 'none';
+                    elem.style.opacity = '0.6';
+                });
             }
         }
 
@@ -2882,6 +2868,265 @@
             // Show success message (optional)
             alert('User data exported successfully!\nFile: ' + filename);
         }
+
+        // Change Log Data for entire year 2025
+        const changeLogData = [
+            {
+                date: '2025-12-15 16:00:00',
+                type: 'Security Patch',
+                title: 'Security Update v4.2.1',
+                description: 'Year-end security hardening update',
+                changedBy: 'Tony Stark',
+                approvedBy: 'Steve Roger',
+                details: 'Applied latest security patches for SSL/TLS protocols, Updated firewall rules, Implemented enhanced DDoS protection, Patched zero-day vulnerabilities in authentication module',
+                status: 'Successfully deployed',
+                downtime: '10 minutes'
+            },
+            {
+                date: '2025-11-20 14:30:00',
+                type: 'Program Update',
+                title: 'Application Update v3.5.0',
+                description: 'Q4 Feature Release',
+                changedBy: 'Bruce Banner',
+                approvedBy: 'Tony Stark',
+                details: 'New inventory forecasting AI module, Enhanced mobile app integration, Automated backup scheduling, Performance improvements for large datasets, New dashboard widgets',
+                status: 'Successfully deployed',
+                downtime: 'None - Rolling deployment'
+            },
+            {
+                date: '2025-10-10 10:15:00',
+                type: 'Configuration',
+                title: 'Auditor Role Implementation',
+                description: 'Added new Auditor role with read-only access',
+                changedBy: 'Charles Xavier',
+                approvedBy: 'Steve Roger',
+                details: 'Created Auditor role with read-only permissions across all modules, Updated permission matrix, Added 5 auditor accounts (auditor01-05), Implemented audit trail for all Auditor access',
+                status: 'Completed',
+                downtime: 'None'
+            },
+            {
+                date: '2025-09-05 18:00:00',
+                type: 'Database',
+                title: 'Database Optimization v2.8',
+                description: 'Q3 Database performance tuning',
+                changedBy: 'Scott Lang',
+                approvedBy: 'Bruce Banner',
+                details: 'Optimized slow-running queries, Added new database indexes for inventory tables, Implemented query caching layer, Database cleanup of archived records, Vacuum and analyze all tables',
+                status: 'Successfully completed',
+                downtime: '30 minutes (planned maintenance)'
+            },
+            {
+                date: '2025-08-12 09:00:00',
+                type: 'Security Patch',
+                title: 'Critical Security Hotfix v3.9.5',
+                description: 'Emergency patch for authentication bypass',
+                changedBy: 'Charles Xavier',
+                approvedBy: 'Steve Roger',
+                details: 'Fixed critical authentication bypass vulnerability (CVE-2025-8877), Updated session management, Forced password reset for all admin accounts, Enhanced brute force protection, Added IP-based rate limiting',
+                status: 'Emergency deployment successful',
+                downtime: '5 minutes'
+            },
+            {
+                date: '2025-07-22 15:30:00',
+                type: 'Program Update',
+                title: 'Mid-Year Update v3.0.0',
+                description: 'Major feature release with UI overhaul',
+                changedBy: 'Bruce Banner',
+                approvedBy: 'Tony Stark',
+                details: 'Complete UI redesign with modern aesthetics, New Role Management module, Enhanced export functionality for all reports, Multi-language support (English, Spanish, Chinese), Dark mode implementation',
+                status: 'Successfully deployed',
+                downtime: '1 hour (planned)'
+            },
+            {
+                date: '2025-06-18 11:00:00',
+                type: 'Configuration',
+                title: 'Backup Policy Update',
+                description: 'Enhanced backup and disaster recovery procedures',
+                changedBy: 'Tony Stark',
+                approvedBy: 'Steve Roger',
+                details: 'Implemented hourly incremental backups, Daily full system backups, Weekly off-site backup sync, 90-day backup retention policy, Automated backup verification and testing',
+                status: 'Active',
+                downtime: 'None'
+            },
+            {
+                date: '2025-05-10 13:45:00',
+                type: 'Security Patch',
+                title: 'Security Update v3.7.0',
+                description: 'Q2 Security enhancements',
+                changedBy: 'Charles Xavier',
+                approvedBy: 'Steve Roger',
+                details: 'Upgraded TLS to version 1.3, Implemented certificate pinning, Enhanced password encryption with bcrypt, Added security headers (HSTS, CSP, X-Frame-Options), Updated dependency packages',
+                status: 'Successfully deployed',
+                downtime: '15 minutes'
+            },
+            {
+                date: '2025-04-08 16:20:00',
+                type: 'Database',
+                title: 'Database Migration v2.5',
+                description: 'Schema update for new features',
+                changedBy: 'Scott Lang',
+                approvedBy: 'Bruce Banner',
+                details: 'Added new tables for audit logging, Modified user table to support MFA tokens, Created indexes for faster reporting queries, Migrated legacy data to new schema, Tested rollback procedures',
+                status: 'Successfully completed',
+                downtime: '45 minutes'
+            },
+            {
+                date: '2025-03-15 10:00:00',
+                type: 'Program Update',
+                title: 'Spring Update v2.8.0',
+                description: 'Q1 Feature enhancements',
+                changedBy: 'Bruce Banner',
+                approvedBy: 'Tony Stark',
+                details: 'New advanced search functionality, Export to Excel for user management, Enhanced activity logging with full-year history, Improved error handling and user notifications, API rate limiting implementation',
+                status: 'Successfully deployed',
+                downtime: '30 minutes'
+            },
+            {
+                date: '2025-02-20 14:00:00',
+                type: 'Configuration',
+                title: 'MFA Enforcement Policy',
+                description: 'Mandatory MFA for all admin users',
+                changedBy: 'Charles Xavier',
+                approvedBy: 'Steve Roger',
+                details: 'Enforced Multi-Factor Authentication for Admin role, Implemented TOTP-based authentication, Email-based backup codes, Grace period notification sent to all admins, Training materials distributed',
+                status: 'Enforced',
+                downtime: 'None'
+            },
+            {
+                date: '2025-01-10 22:30:00',
+                type: 'Security Patch',
+                title: 'Security Update v3.8.2',
+                description: 'Critical security patch applied',
+                changedBy: 'Tony Stark',
+                approvedBy: 'Steve Roger',
+                details: 'Fixed SQL injection vulnerability in inventory search module, Updated authentication token generation to use stronger cryptographic algorithm, Patched cross-site scripting (XSS) vulnerability in user profile section',
+                status: 'Successfully deployed',
+                downtime: '15 minutes'
+            }
+        ];
+
+        // Filter and display change logs
+        function filterChangeLogs() {
+            const startDate = document.getElementById('changelogStartDate').value;
+            const endDate = document.getElementById('changelogEndDate').value;
+            const typeFilter = document.getElementById('changelogTypeFilter').value;
+            const searchKeyword = document.getElementById('changelogSearch').value.toLowerCase();
+            
+            const filtered = changeLogData.filter(log => {
+                const logDate = log.date.split(' ')[0];
+                const matchesDate = logDate >= startDate && logDate <= endDate;
+                const matchesType = !typeFilter || log.type === typeFilter;
+                const matchesKeyword = !searchKeyword || 
+                    log.title.toLowerCase().includes(searchKeyword) ||
+                    log.description.toLowerCase().includes(searchKeyword) ||
+                    log.changedBy.toLowerCase().includes(searchKeyword) ||
+                    log.approvedBy.toLowerCase().includes(searchKeyword) ||
+                    log.details.toLowerCase().includes(searchKeyword);
+                
+                return matchesDate && matchesType && matchesKeyword;
+            });
+            
+            displayChangeLogs(filtered);
+        }
+
+        // Display change logs
+        function displayChangeLogs(logs) {
+            const container = document.getElementById('changelogResults');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="log-entry"><div class="log-content" style="text-align: center; padding: 40px;">No change logs found matching your criteria.</div></div>';
+                return;
+            }
+            
+            let html = '';
+            logs.forEach(log => {
+                const typeClass = log.type === 'Security Patch' ? 'log-type-failed' :
+                                 log.type === 'Program Update' ? 'log-type-change' :
+                                 log.type === 'Database' ? 'log-type-logout' : 'log-type-login';
+                
+                html += `
+                    <div class="log-entry">
+                        <div class="log-header">
+                            <span class="log-timestamp">${log.date}</span>
+                            <span class="log-type ${typeClass}">${log.type.toUpperCase()}</span>
+                        </div>
+                        <div class="log-content">
+                            <strong>${log.title}</strong> - ${log.description}
+                        </div>
+                        <div class="log-details">
+                            <strong>Changed By:</strong> ${log.changedBy} | 
+                            <strong>Approved By:</strong> ${log.approvedBy} | 
+                            <strong>Status:</strong> ${log.status}
+                            ${log.downtime ? ' | <strong>Downtime:</strong> ' + log.downtime : ''}
+                            <br><strong>Details:</strong> ${log.details}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Export change log
+        function exportChangeLog() {
+            const startDate = document.getElementById('changelogStartDate').value;
+            const endDate = document.getElementById('changelogEndDate').value;
+            const typeFilter = document.getElementById('changelogTypeFilter').value;
+            const searchKeyword = document.getElementById('changelogSearch').value.toLowerCase();
+            
+            const filtered = changeLogData.filter(log => {
+                const logDate = log.date.split(' ')[0];
+                const matchesDate = logDate >= startDate && logDate <= endDate;
+                const matchesType = !typeFilter || log.type === typeFilter;
+                const matchesKeyword = !searchKeyword || 
+                    log.title.toLowerCase().includes(searchKeyword) ||
+                    log.description.toLowerCase().includes(searchKeyword) ||
+                    log.changedBy.toLowerCase().includes(searchKeyword) ||
+                    log.approvedBy.toLowerCase().includes(searchKeyword);
+                
+                return matchesDate && matchesType && matchesKeyword;
+            });
+            
+            let csvContent = 'Date,Type,Title,Description,Changed By,Approved By,Status,Downtime,Details\n';
+            
+            filtered.forEach(log => {
+                const row = [
+                    log.date,
+                    log.type,
+                    `"${log.title}"`,
+                    `"${log.description}"`,
+                    log.changedBy,
+                    log.approvedBy,
+                    log.status,
+                    log.downtime || 'None',
+                    `"${log.details.replace(/"/g, '""')}"`
+                ];
+                csvContent += row.join(',') + '\n';
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            const now = new Date();
+            const dateStr = now.toISOString().slice(0, 10);
+            const filename = `SuperHero_ChangeLog_${dateStr}.csv`;
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', filename);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            alert(`Change log exported successfully!\nRecords: ${filtered.length}\nFile: ${filename}`);
+        }
+
+        // Initialize change log on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('changelogResults')) {
+                filterChangeLogs();
+            }
+        });
 
         // Add smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
