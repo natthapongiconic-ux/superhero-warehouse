@@ -523,31 +523,70 @@
             opacity: 1;
         }
 
-        /* Dropdown Menu Styles */
-        .nav-dropdown {
-            position: relative;
+        /* Secondary Navigation Bar for IT Administration */
+        .secondary-nav {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 8px;
+            margin-bottom: 32px;
+            display: none;
+            gap: 6px;
+            overflow-x: auto;
+            animation: slideDown 0.5s ease-out;
         }
 
-        .nav-dropdown-btn {
-            padding: 14px 24px;
+        .secondary-nav.show {
+            display: flex;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .secondary-nav-label {
+            padding: 10px 16px;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            border-right: 1px solid var(--border);
+            padding-right: 20px;
+            margin-right: 10px;
+        }
+
+        .secondary-nav-btn {
+            padding: 10px 14px;
             background: transparent;
             border: none;
             color: var(--text-secondary);
             font-family: 'Outfit', sans-serif;
-            font-size: 14px;
+            font-size: 11px;
             font-weight: 500;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             white-space: nowrap;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             position: relative;
             overflow: hidden;
         }
 
-        .nav-dropdown-btn::before {
+        .secondary-nav-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -560,109 +599,23 @@
             z-index: -1;
         }
 
-        .nav-dropdown-btn:hover {
+        .secondary-nav-btn:hover {
             color: var(--text-primary);
             background: rgba(0, 217, 255, 0.1);
+            transform: translateY(-2px);
         }
 
-        .nav-dropdown-btn.active {
+        .secondary-nav-btn.active {
             color: var(--primary);
             font-weight: 600;
         }
 
-        .nav-dropdown-btn.active::before {
+        .secondary-nav-btn.active::before {
             opacity: 1;
         }
 
-        .dropdown-arrow {
-            transition: transform 0.3s ease;
-            font-size: 10px;
-        }
-
-        .nav-dropdown.open .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        .nav-submenu {
-            position: fixed;
-            min-width: 280px;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 8px;
-            box-shadow: 0 12px 48px rgba(0, 217, 255, 0.3);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-20px) scale(0.95);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 9999;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        /* Custom scrollbar for submenu */
-        .nav-submenu::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .nav-submenu::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-
-        .nav-submenu::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
-        .nav-submenu::-webkit-scrollbar-thumb:hover {
-            background: var(--success);
-        }
-
-        .nav-dropdown.open .nav-submenu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0) scale(1);
-        }
-
-        .nav-submenu-item {
-            padding: 12px 16px;
-            color: var(--text-primary);
-            font-family: 'Outfit', sans-serif;
-            font-size: 13px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 4px;
-        }
-
-        .nav-submenu-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .nav-submenu-item:hover {
-            background: var(--input-bg);
-            color: var(--accent);
-            transform: translateX(6px);
-            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.2);
-        }
-
-        .nav-submenu-item.active {
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 255, 136, 0.2));
-            color: var(--accent);
-            font-weight: 600;
-            border-left: 3px solid var(--accent);
-            padding-left: 13px;
-        }
-
-        .submenu-icon {
-            font-size: 16px;
-            width: 20px;
-            text-align: center;
+        .nav-icon {
+            font-size: 14px;
         }
 
         .content-section {
@@ -1331,40 +1284,37 @@
             <button class="nav-btn active" onclick="showSection('dashboard')">Dashboard</button>
             <button class="nav-btn" onclick="showSection('inventory')">Inventory Management</button>
             <button class="nav-btn" onclick="showSection('orders')">Order Management</button>
-            
-            <div class="nav-dropdown" id="itAdminDropdown">
-                <button class="nav-dropdown-btn" onclick="toggleDropdown()">
-                    IT Administration
-                    <span class="dropdown-arrow">▼</span>
-                </button>
-                <div class="nav-submenu">
-                    <div class="nav-submenu-item" onclick="showSection('security')">
-                        <span class="submenu-icon">🔒</span>
-                        Password & Security
-                    </div>
-                    <div class="nav-submenu-item" onclick="showSection('users')">
-                        <span class="submenu-icon">👥</span>
-                        User Management
-                    </div>
-                    <div class="nav-submenu-item" onclick="showSection('authorization')">
-                        <span class="submenu-icon">🛡️</span>
-                        Authorization
-                    </div>
-                    <div class="nav-submenu-item" onclick="showSection('rolemanagement')">
-                        <span class="submenu-icon">⚙️</span>
-                        Role Management
-                    </div>
-                    <div class="nav-submenu-item" onclick="showSection('activity')">
-                        <span class="submenu-icon">📋</span>
-                        Log Activity Review
-                    </div>
-                    <div class="nav-submenu-item" onclick="showSection('changelog')">
-                        <span class="submenu-icon">📝</span>
-                        Change Log
-                    </div>
-                </div>
-            </div>
+            <button class="nav-btn" onclick="toggleITAdmin()">IT Administration</button>
         </nav>
+
+        <!-- IT Administration Secondary Navigation -->
+        <div id="itAdminNav" class="secondary-nav">
+            <div class="secondary-nav-label">IT ADMIN:</div>
+            <button class="secondary-nav-btn" onclick="showSection('security')">
+                <span class="nav-icon">🔒</span>
+                Password
+            </button>
+            <button class="secondary-nav-btn" onclick="showSection('users')">
+                <span class="nav-icon">👥</span>
+                Users
+            </button>
+            <button class="secondary-nav-btn" onclick="showSection('authorization')">
+                <span class="nav-icon">🛡️</span>
+                Authorization
+            </button>
+            <button class="secondary-nav-btn" onclick="showSection('rolemanagement')">
+                <span class="nav-icon">⚙️</span>
+                Roles
+            </button>
+            <button class="secondary-nav-btn" onclick="showSection('activity')">
+                <span class="nav-icon">📋</span>
+                Activity Log
+            </button>
+            <button class="secondary-nav-btn" onclick="showSection('changelog')">
+                <span class="nav-icon">📝</span>
+                Change Log
+            </button>
+        </div>
 
         <!-- Dashboard Section -->
         <div id="dashboard" class="content-section active">
@@ -3146,66 +3096,26 @@
             }
         }
 
-        // Toggle dropdown menu
-        function toggleDropdown() {
-            const dropdown = document.getElementById('itAdminDropdown');
-            const isOpen = dropdown.classList.contains('open');
+        // Toggle IT Administration menu
+        function toggleITAdmin() {
+            const itAdminNav = document.getElementById('itAdminNav');
+            const itAdminBtn = event.target;
             
-            if (!isOpen) {
-                // Calculate position
-                const btn = dropdown.querySelector('.nav-dropdown-btn');
-                const rect = btn.getBoundingClientRect();
-                const submenu = dropdown.querySelector('.nav-submenu');
-                
-                // Position submenu below button
-                submenu.style.top = (rect.bottom + 8) + 'px';
-                submenu.style.left = rect.left + 'px';
-                
-                // Check if submenu would go off bottom of screen
-                const submenuHeight = 320; // approximate height
-                if (rect.bottom + submenuHeight > window.innerHeight) {
-                    // Position above button instead
-                    submenu.style.top = (rect.top - submenuHeight - 8) + 'px';
-                }
-                
-                dropdown.classList.add('open');
-                
-                // Close dropdown when clicking outside
-                setTimeout(() => {
-                    document.addEventListener('click', closeDropdownOutside);
-                }, 0);
+            if (itAdminNav.classList.contains('show')) {
+                itAdminNav.classList.remove('show');
+                itAdminBtn.classList.remove('active');
             } else {
-                dropdown.classList.remove('open');
-                document.removeEventListener('click', closeDropdownOutside);
+                itAdminNav.classList.add('show');
+                itAdminBtn.classList.add('active');
+                
+                // Remove active from main nav buttons
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    if (btn !== itAdminBtn) {
+                        btn.classList.remove('active');
+                    }
+                });
             }
         }
-
-        function closeDropdownOutside(event) {
-            const dropdown = document.getElementById('itAdminDropdown');
-            if (!dropdown.contains(event.target)) {
-                dropdown.classList.remove('open');
-                document.removeEventListener('click', closeDropdownOutside);
-            }
-        }
-
-        // Update submenu position on scroll/resize
-        window.addEventListener('scroll', function() {
-            const dropdown = document.getElementById('itAdminDropdown');
-            if (dropdown && dropdown.classList.contains('open')) {
-                const btn = dropdown.querySelector('.nav-dropdown-btn');
-                const rect = btn.getBoundingClientRect();
-                const submenu = dropdown.querySelector('.nav-submenu');
-                submenu.style.top = (rect.bottom + 8) + 'px';
-                submenu.style.left = rect.left + 'px';
-            }
-        });
-
-        window.addEventListener('resize', function() {
-            const dropdown = document.getElementById('itAdminDropdown');
-            if (dropdown && dropdown.classList.contains('open')) {
-                dropdown.classList.remove('open');
-            }
-        });
 
         // Show section
         function showSection(sectionId) {
@@ -3217,32 +3127,37 @@
             // Show selected section
             document.getElementById(sectionId).classList.add('active');
             
-            // Update nav buttons
+            // Update main nav buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Update submenu items
-            document.querySelectorAll('.nav-submenu-item').forEach(item => {
-                item.classList.remove('active');
+            // Update secondary nav buttons
+            document.querySelectorAll('.secondary-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
             });
             
-            // Check if it's a main nav button
+            // Check if clicked button is a main nav button
             const clickedBtn = event?.target;
-            if (clickedBtn && clickedBtn.classList.contains('nav-btn')) {
-                clickedBtn.classList.add('active');
-            }
-            
-            // Check if it's a submenu item
-            if (clickedBtn && clickedBtn.classList.contains('nav-submenu-item')) {
-                clickedBtn.classList.add('active');
-                document.querySelector('.nav-dropdown-btn').classList.add('active');
-            }
-            
-            // Close dropdown after selection
-            const dropdown = document.getElementById('itAdminDropdown');
-            if (dropdown) {
-                dropdown.classList.remove('open');
+            if (clickedBtn) {
+                if (clickedBtn.classList.contains('nav-btn')) {
+                    clickedBtn.classList.add('active');
+                    // Hide IT Admin menu if showing non-IT section
+                    if (!clickedBtn.textContent.includes('IT Administration')) {
+                        document.getElementById('itAdminNav').classList.remove('show');
+                    }
+                } else if (clickedBtn.classList.contains('secondary-nav-btn') || clickedBtn.parentElement.classList.contains('secondary-nav-btn')) {
+                    // Activate the clicked secondary button
+                    const btn = clickedBtn.classList.contains('secondary-nav-btn') ? clickedBtn : clickedBtn.parentElement;
+                    btn.classList.add('active');
+                    
+                    // Keep IT Administration button active
+                    document.querySelectorAll('.nav-btn').forEach(navBtn => {
+                        if (navBtn.textContent.includes('IT Administration')) {
+                            navBtn.classList.add('active');
+                        }
+                    });
+                }
             }
         }
 
