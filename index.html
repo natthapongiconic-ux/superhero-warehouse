@@ -214,6 +214,209 @@
         #mainApp.active {
             display: block;
         }
+
+        /* OTP Modal Styles */
+        .otp-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .otp-modal-content {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0f1629 100%);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 25px 60px rgba(0, 217, 255, 0.3);
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { 
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .otp-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .otp-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 217, 255, 0.6); }
+        }
+
+        .otp-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .otp-subtitle {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .otp-form {
+            margin-top: 30px;
+        }
+
+        .otp-error {
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            text-align: center;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .otp-input-group {
+            margin-bottom: 25px;
+        }
+
+        .otp-label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .otp-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(26, 31, 58, 0.6);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
+        .otp-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            background: rgba(26, 31, 58, 0.8);
+        }
+
+        .otp-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .otp-btn {
+            padding: 14px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .otp-btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--success));
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .otp-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 217, 255, 0.5);
+        }
+
+        .otp-btn-secondary {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .otp-btn-secondary:hover {
+            background: rgba(0, 217, 255, 0.2);
+        }
+
+        .otp-btn-cancel {
+            background: rgba(255, 77, 77, 0.1);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .otp-btn-cancel:hover {
+            background: rgba(255, 77, 77, 0.2);
+        }
+
+        .otp-timer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        #otpCountdown {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 15px;
+        }
+    
     
     <style>
         * {
@@ -1123,36 +1326,58 @@
 
         .role-tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
+            gap: 12px;
+            margin-bottom: 32px;
             overflow-x: auto;
-            padding: 4px;
+            padding: 8px;
+            background: rgba(10, 14, 39, 0.4);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 217, 255, 0.1);
         }
 
         .role-tab {
-            padding: 12px 24px;
-            background: var(--input-bg);
-            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 20px;
+            background: rgba(26, 31, 58, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.2);
             border-radius: 10px;
             color: var(--text-secondary);
             font-family: 'Outfit', sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
+            position: relative;
+        }
+
+        .role-tab .role-icon {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .role-tab:hover {
             border-color: var(--accent);
+            background: rgba(0, 217, 255, 0.1);
             color: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.2);
         }
 
         .role-tab.active {
-            background: linear-gradient(135deg, var(--accent), var(--success));
-            color: var(--primary);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 255, 136, 0.2));
+            color: var(--accent);
             border-color: var(--accent);
             font-weight: 600;
+            box-shadow: 0 4px 16px rgba(0, 217, 255, 0.3);
+        }
+
+        .role-tab.active .role-icon {
+            color: var(--accent);
         }
 
         @media (max-width: 768px) {
@@ -1249,6 +1474,55 @@
             <div class="login-footer">
                 <p>Test Accounts: admin, auditor01-auditor05</p>
                 <p style="margin-top: 8px; font-size: 11px;">© 2025 Super Hero Company Limited. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Verification Modal -->
+    <div id="otpModal" class="otp-modal" style="display: none;">
+        <div class="otp-modal-content">
+            <div class="otp-header">
+                <div class="otp-icon">🔐</div>
+                <h2 class="otp-title">Two-Factor Authentication</h2>
+                <p class="otp-subtitle">OTP sent to your registered Email</p>
+            </div>
+            
+            <div class="otp-form">
+                <div class="otp-error" id="otpError" style="display: none;">
+                    Invalid OTP. Please try again.
+                </div>
+                
+                <div class="otp-input-group">
+                    <label class="otp-label">Enter 6-digit OTP</label>
+                    <input 
+                        type="text" 
+                        id="otpInput" 
+                        class="otp-input" 
+                        placeholder="000000"
+                        maxlength="6"
+                        autocomplete="off"
+                        pattern="[0-9]{6}"
+                    >
+                    <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">
+                        For testing, use OTP: 987654
+                    </small>
+                </div>
+                
+                <div class="otp-actions">
+                    <button type="button" class="otp-btn otp-btn-primary" onclick="verifyOTP()">
+                        ✅ Verify & Login
+                    </button>
+                    <button type="button" class="otp-btn otp-btn-secondary" onclick="resendOTP()">
+                        🔄 Resend OTP
+                    </button>
+                    <button type="button" class="otp-btn otp-btn-cancel" onclick="cancelOTP()">
+                        ❌ Cancel
+                    </button>
+                </div>
+                
+                <div class="otp-timer" id="otpTimer">
+                    OTP expires in: <span id="otpCountdown">03:00</span>
+                </div>
             </div>
         </div>
     </div>
@@ -1660,11 +1934,9 @@
                         <input type="number" class="form-input" value="0" min="0" max="10">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Dictionary Check</label>
-                        <div class="toggle-container">
-                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
-                            <span>Enabled</span>
-                        </div>
+                        <label class="form-label">Minimum Lower Case Characters</label>
+                        <input type="number" class="form-input" value="1" min="0" max="10">
+                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">At least 1 lowercase letter</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Password Age (Days)</label>
@@ -1678,15 +1950,15 @@
                     <div class="form-group">
                         <label class="form-label">Multi-Factor Authentication (MFA)</label>
                         <div class="toggle-container">
-                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
-                            <span>Enabled</span>
+                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                            <span>Disabled</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Password Encryption</label>
                         <div class="toggle-container">
-                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
-                            <span>Enabled (SHA-256)</span>
+                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                            <span>Disabled</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -1819,15 +2091,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                                                        <tr>
                                 <td><strong>WMS_Admin</strong></td>
                                 <td>admin@okisee.co.th</td>
                                 <td>Admin</td>
-                                <td>admin</td>
+                                <td>Anti_Hero555</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>4/5/2025</td>
+                                <td>8/8/2023 09:30</td>
                                 <td>4/5/2025 11:15</td>
-                                <td>2/20/2025</td>
+                                <td>2/20/2025 14:20</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1839,11 +2111,11 @@
                                 <td><strong>Tony Stark</strong></td>
                                 <td>tony.stark@superhero.com</td>
                                 <td>Admin</td>
-                                <td>Tony1234</td>
+                                <td>R1ch@F</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>8/8/2023</td>
+                                <td>8/8/2023 10:15</td>
                                 <td>12/15/2025 9:15</td>
-                                <td>10/25/2025</td>
+                                <td>10/25/2025 11:30</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1855,11 +2127,11 @@
                                 <td><strong>Scott Lang</strong></td>
                                 <td>scott.lang@superhero.com</td>
                                 <td>Admin</td>
-                                <td>SCOT555</td>
+                                <td>iL0veMyJ0b</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>1/1/2024</td>
+                                <td>1/1/2024 13:45</td>
                                 <td>12/15/2025 7:20</td>
-                                <td>12/21/2025</td>
+                                <td>12/21/2025 16:10</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1871,11 +2143,11 @@
                                 <td><strong>Charles Xavier</strong></td>
                                 <td>charles.xavier@superhero.com</td>
                                 <td>IT Security</td>
-                                <td>Wn4rGx&tP8</td>
+                                <td>B@ld1e!</td>
                                 <td><span class="status-badge status-inactive">Inactive</span></td>
-                                <td>2/1/2024</td>
+                                <td>2/1/2024 11:20</td>
                                 <td>9/1/2025 8:00</td>
-                                <td>10/22/2025</td>
+                                <td>10/22/2025 15:45</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1887,11 +2159,11 @@
                                 <td><strong>Clark Kent</strong></td>
                                 <td>clark.kent@superhero.com</td>
                                 <td>Admin</td>
-                                <td>ILoveMyjob</td>
+                                <td>TinyRedPanty123</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2/1/2024</td>
+                                <td>2/1/2024 09:15</td>
                                 <td>12/15/2025 9:45</td>
-                                <td>10/22/2025</td>
+                                <td>10/22/2025 10:30</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1903,11 +2175,11 @@
                                 <td><strong>Bruce Wayne</strong></td>
                                 <td>bruce.wayne@superhero.com</td>
                                 <td>Warehouse Manager</td>
-                                <td>Pv9kFd@mS6</td>
+                                <td>0rph@n!</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>3/15/2024</td>
+                                <td>3/15/2024 14:00</td>
                                 <td>12/15/2025 6:30</td>
-                                <td>9/11/2024</td>
+                                <td>9/11/2024 13:20</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1919,11 +2191,11 @@
                                 <td><strong>Dick Grayson</strong></td>
                                 <td>dick.grayson@superhero.com</td>
                                 <td>Warehouse Staff</td>
-                                <td>Jt8x7788</td>
+                                <td>B@tSl@p!</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>4/1/2024</td>
-                                <td>12/15/2025 6:45</td>
-                                <td>12/28/2024</td>
+                                <td>4/1/2024 10:45</td>
+                                <td>4/1/2024 10:50</td>
+                                <td>12/28/2024 15:15</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1935,11 +2207,11 @@
                                 <td><strong>Selina Kyle</strong></td>
                                 <td>selina.kyle@superhero.com</td>
                                 <td>Warehouse Staff</td>
-                                <td>Selina123</td>
+                                <td>Purr$!</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>7/1/2024</td>
+                                <td>7/1/2024 16:30</td>
                                 <td>8/2/2025 22:30</td>
-                                <td>6/24/2025</td>
+                                <td>6/24/2025 11:45</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1951,11 +2223,11 @@
                                 <td><strong>Diana Prince</strong></td>
                                 <td>diana.prince@superhero.com</td>
                                 <td>Accounting Manager</td>
-                                <td>Vs3nZk@rH8</td>
+                                <td>TidyMang0</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>7/1/2024</td>
+                                <td>7/1/2024 13:15</td>
                                 <td>12/15/2025 8:45</td>
-                                <td>9/22/2025</td>
+                                <td>9/22/2025 09:30</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1967,11 +2239,11 @@
                                 <td><strong>Peter Parker</strong></td>
                                 <td>peter.parker@superhero.com</td>
                                 <td>Accounting Staff</td>
-                                <td>SpiderWeb</td>
+                                <td>Br0k3!</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>9/10/2024</td>
+                                <td>9/10/2024 15:20</td>
                                 <td>12/15/2025 9:00</td>
-                                <td>3/9/2025</td>
+                                <td>3/9/2025 14:00</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1983,11 +2255,11 @@
                                 <td><strong>Barbara Gordon</strong></td>
                                 <td>barbara.gordon@superhero.com</td>
                                 <td>Warehouse Staff</td>
-                                <td>P@ssword</td>
+                                <td>H@ck3rG</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>1/15/2025</td>
+                                <td>1/15/2025 11:30</td>
                                 <td>12/15/2025 13:45</td>
-                                <td>10/12/2025</td>
+                                <td>10/12/2025 16:20</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1999,11 +2271,11 @@
                                 <td><strong>Gwen Stacy</strong></td>
                                 <td>gwen.stacy@superhero.com</td>
                                 <td>Accounting Staff</td>
-                                <td>Dt7rSm</td>
+                                <td>Gh0$ty!</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>3/1/2025</td>
+                                <td>3/1/2025 10:00</td>
                                 <td>12/15/2025 9:10</td>
-                                <td>11/26/2025</td>
+                                <td>11/26/2025 13:45</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -2015,11 +2287,11 @@
                                 <td><strong>Miles Morales</strong></td>
                                 <td>miles.morales@superhero.com</td>
                                 <td>Accounting Staff</td>
-                                <td>Nb4yGx</td>
+                                <td>Wh@t$Up</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>7/1/2025</td>
+                                <td>7/1/2025 12:30</td>
                                 <td>12/15/2025 8:50</td>
-                                <td>9/29/2025</td>
+                                <td>9/29/2025 15:10</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -2027,6 +2299,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -2201,7 +2474,7 @@
             </div>
         </div>
 
-        <!-- Role Management Section -->
+                                <!-- Role Management Section -->
         <div id="rolemanagement" class="content-section">
             <div class="card">
                 <div class="card-header">
@@ -2209,13 +2482,30 @@
                 </div>
                 
                 <div class="role-tabs">
-                    <button class="role-tab active" onclick="switchRole('admin')">Admin</button>
-                    <button class="role-tab" onclick="switchRole('itsecurity')">IT Security</button>
-                    <button class="role-tab" onclick="switchRole('warehousemanager')">Warehouse Manager</button>
-                    <button class="role-tab" onclick="switchRole('warehousestaff')">Warehouse Staff</button>
-                    <button class="role-tab" onclick="switchRole('accountingmanager')">Accounting Manager</button>
-                    <button class="role-tab" onclick="switchRole('accountingstaff')">Accounting Staff</button>
-                    <button class="role-tab" onclick="switchRole('auditor')">Auditor</button>
+                    <button class="role-tab active" onclick="switchRole('admin')">
+                        <span class="role-icon">👑</span>
+                        <span>Admin</span>
+                    </button>
+                    <button class="role-tab" onclick="switchRole('itsecurity')">
+                        <span class="role-icon">🔒</span>
+                        <span>IT Security</span>
+                    </button>
+                    <button class="role-tab" onclick="switchRole('warehousemanager')">
+                        <span class="role-icon">📦</span>
+                        <span>Warehouse Manager</span>
+                    </button>
+                    <button class="role-tab" onclick="switchRole('warehousestaff')">
+                        <span class="role-icon">👷</span>
+                        <span>Warehouse Staff</span>
+                    </button>
+                    <button class="role-tab" onclick="switchRole('accountingmanager')">
+                        <span class="role-icon">💰</span>
+                        <span>Accounting Manager</span>
+                    </button>
+                    <button class="role-tab" onclick="switchRole('accountingstaff')">
+                        <span class="role-icon">📊</span>
+                        <span>Accounting Staff</span>
+                    </button>
                 </div>
 
                 <!-- Admin Role Permissions -->
@@ -2224,109 +2514,13 @@
                         <div class="menu-group">
                             <div class="menu-group-header">
                                 <div class="menu-icon">🏠</div>
-                                <div class="menu-group-title">Dashboard & Home</div>
+                                <div class="menu-group-title">Dashboard</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Dashboard Overview</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Analytics</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Reports Hub</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="menu-group">
-                            <div class="menu-group-header">
-                                <div class="menu-icon">📦</div>
-                                <div class="menu-group-title">Inventory Management</div>
-                            </div>
-                            <div class="menu-items">
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Inventory</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Add Items</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Edit Items</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Delete Items</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Stock Adjustment</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Inventory Reports</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="menu-group">
-                            <div class="menu-group-header">
-                                <div class="menu-icon">📋</div>
-                                <div class="menu-group-title">Order Management</div>
-                            </div>
-                            <div class="menu-items">
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Orders</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Create Order</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Modify Order</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Cancel Order</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Order History</span>
+                                        <span class="menu-item-label">Full Access</span>
                                     </div>
                                 </div>
                             </div>
@@ -2347,25 +2541,19 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Add User</span>
+                                        <span class="menu-item-label">Add Users</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Edit User</span>
+                                        <span class="menu-item-label">Delete Users</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Delete User</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Reset Password</span>
+                                        <span class="menu-item-label">Modify Users</span>
                                     </div>
                                 </div>
                             </div>
@@ -2374,31 +2562,13 @@
                         <div class="menu-group">
                             <div class="menu-group-header">
                                 <div class="menu-icon">🔒</div>
-                                <div class="menu-group-title">Security & Settings</div>
+                                <div class="menu-group-title">Security Settings</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Security Settings</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Role Management</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">System Configuration</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Backup & Restore</span>
+                                        <span class="menu-item-label">Full Access</span>
                                     </div>
                                 </div>
                             </div>
@@ -2406,32 +2576,89 @@
 
                         <div class="menu-group">
                             <div class="menu-group-header">
-                                <div class="menu-icon">💰</div>
-                                <div class="menu-group-title">Financial Management</div>
+                                <div class="menu-icon">📦</div>
+                                <div class="menu-group-title">Inventory Management</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Financials</span>
+                                        <span class="menu-item-label">View Transaction</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Invoices</span>
+                                        <span class="menu-item-label">Add</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Payments</span>
+                                        <span class="menu-item-label">Delete</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Financial Reports</span>
+                                        <span class="menu-item-label">Modify</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Reporting</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-group">
+                            <div class="menu-group-header">
+                                <div class="menu-icon">📋</div>
+                                <div class="menu-group-title">Order Management</div>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Transaction</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Delete</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Reporting</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
                             </div>
@@ -2446,25 +2673,7 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Activity Logs</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Change Log</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">System Audit</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Export Logs</span>
+                                        <span class="menu-item-label">All Functions</span>
                                     </div>
                                 </div>
                             </div>
@@ -2472,57 +2681,9 @@
                     </div>
                 </div>
 
-                <!-- HR Role Permissions -->
-                <div id="hr-permissions" class="role-permissions" style="display: none;">
+                <!-- IT Security Role Permissions -->
+                <div id="itsecurity-permissions" class="role-permissions">
                     <div class="permission-grid">
-                        <div class="menu-group">
-                            <div class="menu-group-header">
-                                <div class="menu-icon">🏠</div>
-                                <div class="menu-group-title">Dashboard & Home</div>
-                            </div>
-                            <div class="menu-items">
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Dashboard Overview</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Analytics</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Reports Hub</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="menu-group">
-                            <div class="menu-group-header">
-                                <div class="menu-icon">📦</div>
-                                <div class="menu-group-title">Inventory Management</div>
-                            </div>
-                            <div class="menu-items">
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Inventory</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Add Items</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="menu-group">
                             <div class="menu-group-header">
                                 <div class="menu-icon">👥</div>
@@ -2532,31 +2693,7 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Users</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Add User</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Edit User</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Delete User</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Reset Password</span>
+                                        <span class="menu-item-label">View Users Only</span>
                                     </div>
                                 </div>
                             </div>
@@ -2565,19 +2702,13 @@
                         <div class="menu-group">
                             <div class="menu-group-header">
                                 <div class="menu-icon">🔒</div>
-                                <div class="menu-group-title">Security & Settings</div>
+                                <div class="menu-group-title">Security Settings</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Security Settings (Read)</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Role Management</span>
+                                        <span class="menu-item-label">View Only</span>
                                     </div>
                                 </div>
                             </div>
@@ -2592,13 +2723,7 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Activity Logs</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">User Activity Reports</span>
+                                        <span class="menu-item-label">All Functions</span>
                                     </div>
                                 </div>
                             </div>
@@ -2606,25 +2731,19 @@
                     </div>
                 </div>
 
-                <!-- Warehouse Role Permissions -->
-                <div id="warehouse-permissions" class="role-permissions" style="display: none;">
+                <!-- Warehouse Manager Role Permissions -->
+                <div id="warehousemanager-permissions" class="role-permissions">
                     <div class="permission-grid">
                         <div class="menu-group">
                             <div class="menu-group-header">
                                 <div class="menu-icon">🏠</div>
-                                <div class="menu-group-title">Dashboard & Home</div>
+                                <div class="menu-group-title">Dashboard</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Dashboard Overview</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Warehouse Analytics</span>
+                                        <span class="menu-item-label">Full Access</span>
                                     </div>
                                 </div>
                             </div>
@@ -2639,37 +2758,147 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Inventory</span>
+                                        <span class="menu-item-label">View Transaction</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Add Items</span>
+                                        <span class="menu-item-label">Add</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Edit Items</span>
+                                        <span class="menu-item-label">Delete</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Reporting</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-group">
+                            <div class="menu-group-header">
+                                <div class="menu-icon">📋</div>
+                                <div class="menu-group-title">Order Management</div>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Transaction</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Delete</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Reporting</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Warehouse Staff Role Permissions -->
+                <div id="warehousestaff-permissions" class="role-permissions">
+                    <div class="permission-grid">
+                        <div class="menu-group">
+                            <div class="menu-group-header">
+                                <div class="menu-icon">🏠</div>
+                                <div class="menu-group-title">Dashboard</div>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Read Only</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-group">
+                            <div class="menu-group-header">
+                                <div class="menu-icon">📦</div>
+                                <div class="menu-group-title">Inventory Management</div>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Transaction</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Delete Items</span>
+                                        <span class="menu-item-label">Delete</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Stock Adjustment</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Inventory Reports</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Reporting</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
                             </div>
@@ -2684,73 +2913,37 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Orders</span>
+                                        <span class="menu-item-label">View Transaction</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Create Order</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Modify Order</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Delete</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Process Shipment</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Order History</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="menu-group">
-                            <div class="menu-group-header">
-                                <div class="menu-icon">🚚</div>
-                                <div class="menu-group-title">Shipping & Receiving</div>
-                            </div>
-                            <div class="menu-items">
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Receive Shipment</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Reporting</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Pack Orders</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Print Labels</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="menu-group">
-                            <div class="menu-group-header">
-                                <div class="menu-icon">💰</div>
-                                <div class="menu-group-title">Financial Management</div>
-                            </div>
-                            <div class="menu-items">
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Financials (Read)</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
                             </div>
@@ -2758,25 +2951,19 @@
                     </div>
                 </div>
 
-                <!-- Accounting Role Permissions -->
-                <div id="accounting-permissions" class="role-permissions" style="display: none;">
+                <!-- Accounting Manager Role Permissions -->
+                <div id="accountingmanager-permissions" class="role-permissions">
                     <div class="permission-grid">
                         <div class="menu-group">
                             <div class="menu-group-header">
                                 <div class="menu-icon">🏠</div>
-                                <div class="menu-group-title">Dashboard & Home</div>
+                                <div class="menu-group-title">Dashboard</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Dashboard Overview</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Financial Analytics</span>
+                                        <span class="menu-item-label">Read Only</span>
                                     </div>
                                 </div>
                             </div>
@@ -2791,7 +2978,37 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Inventory (Read)</span>
+                                        <span class="menu-item-label">View Transaction</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Delete</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">View Reporting</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
                             </div>
@@ -2806,13 +3023,57 @@
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Orders (Read)</span>
+                                        <span class="menu-item-label">View Transaction</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Delete</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Order History</span>
+                                        <span class="menu-item-label">View Reporting</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accounting Staff Role Permissions -->
+                <div id="accountingstaff-permissions" class="role-permissions">
+                    <div class="permission-grid">
+                        <div class="menu-group">
+                            <div class="menu-group-header">
+                                <div class="menu-icon">🏠</div>
+                                <div class="menu-group-title">Dashboard</div>
+                            </div>
+                            <div class="menu-items">
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Read Only</span>
                                     </div>
                                 </div>
                             </div>
@@ -2820,44 +3081,44 @@
 
                         <div class="menu-group">
                             <div class="menu-group-header">
-                                <div class="menu-icon">💰</div>
-                                <div class="menu-group-title">Financial Management</div>
+                                <div class="menu-icon">📦</div>
+                                <div class="menu-group-title">Inventory Management</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">View Financials</span>
+                                        <span class="menu-item-label">View Transaction</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Delete</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Create Invoice</span>
+                                        <span class="menu-item-label">View Reporting</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Process Payments</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Financial Reports</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Tax Management</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Budget Planning</span>
+                                        <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
                             </div>
@@ -2865,32 +3126,44 @@
 
                         <div class="menu-group">
                             <div class="menu-group-header">
-                                <div class="menu-icon">📊</div>
-                                <div class="menu-group-title">Reports & Analytics</div>
+                                <div class="menu-icon">📋</div>
+                                <div class="menu-group-title">Order Management</div>
                             </div>
                             <div class="menu-items">
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">P&L Statement</span>
+                                        <span class="menu-item-label">View Transaction</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Add</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Delete</span>
+                                    </div>
+                                </div>
+                                <div class="menu-item">
+                                    <div class="checkbox-wrapper">
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
                                         <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Balance Sheet</span>
+                                        <span class="menu-item-label">View Reporting</span>
                                     </div>
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Cash Flow</span>
-                                    </div>
-                                </div>
-                                <div class="menu-item">
-                                    <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
-                                        <span class="menu-item-label">Export Reports</span>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
+                                        <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
                             </div>
@@ -2904,6 +3177,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Log Activity Review Section -->
         <div id="activity" class="content-section">
@@ -2965,20 +3239,20 @@
         // Login credentials
         const validCredentials = {
             // Production Users
-            'WMS_Admin': 'admin',
+            'WMS_Admin': 'Anti_Hero555',
             'admin': 'admin',
-            'Tony Stark': 'Tony1234',
-            'Scott Lang': 'SCOT555',
-            'Charles Xavier': 'Wn4rGx&tP8',
-            'Clark Kent': 'ILoveMyjob',
-            'Bruce Wayne': 'Pv9kFd@mS6',
-            'Dick Grayson': 'Jt8x7788',
-            'Selina Kyle': 'Selina123',
-            'Diana Prince': 'Vs3nZk@rH8',
-            'Peter Parker': 'SpiderWeb',
-            'Barbara Gordon': 'P@ssword',
-            'Gwen Stacy': 'Dt7rSm',
-            'Miles Morales': 'Nb4yGx',
+            'Tony Stark': 'R1ch@F',
+            'Scott Lang': 'iL0veMyJ0b',
+            'Charles Xavier': 'B@ld1e!',
+            'Clark Kent': 'TinyRedPanty123',
+            'Bruce Wayne': '0rph@n!',
+            'Dick Grayson': 'B@tSl@p!',
+            'Selina Kyle': 'Purr$!',
+            'Diana Prince': 'TidyMang0',
+            'Peter Parker': 'Br0k3!',
+            'Barbara Gordon': 'H@ck3rG',
+            'Gwen Stacy': 'Gh0$ty!',
+            'Miles Morales': 'Wh@t$Up',
             
             // Test Accounts (not shown in user list)
             'Administrator': 'OK!See001',
@@ -3063,21 +3337,44 @@
             }
         }
 
-        // Handle login
-        function handleLogin(event) {
-            event.preventDefault();
+        // OTP Timer
+        let otpTimerInterval;
+        function startOTPTimer() {
+            let timeLeft = 180; // 3 minutes
+            clearInterval(otpTimerInterval);
             
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const errorElement = document.getElementById('loginError');
-            
-            if (validCredentials[username] && validCredentials[username] === password) {
-                // Successful login - reset failed attempts
-                failedLoginAttempts[username] = 0;
-                currentUser = username;
-                currentRole = userRoles[username];
+            otpTimerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('otpCountdown').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                 
-                errorElement.classList.remove('show');
+                if (timeLeft <= 0) {
+                    clearInterval(otpTimerInterval);
+                    cancelOTP();
+                    alert('OTP expired. Please login again.');
+                }
+            }, 1000);
+        }
+
+        // Verify OTP
+        function verifyOTP() {
+            const otpInput = document.getElementById('otpInput').value;
+            const otpError = document.getElementById('otpError');
+            const mockOTP = '987654';
+            
+            if (otpInput === mockOTP) {
+                // OTP verified - complete login
+                clearInterval(otpTimerInterval);
+                
+                const username = window.tempLoginData.username;
+                const role = window.tempLoginData.role;
+                
+                currentUser = username;
+                currentRole = role;
+                
+                document.getElementById('otpModal').style.display = 'none';
                 document.getElementById('loginPage').classList.add('hidden');
                 document.getElementById('mainApp').classList.add('active');
                 
@@ -3086,7 +3383,7 @@
                 const userName = document.querySelector('.user-name');
                 const userRole = document.querySelector('.user-role');
                 
-                if (username === 'admin') {
+                if (username === 'admin' || username === 'Administrator') {
                     userAvatar.textContent = 'AD';
                     userName.textContent = 'Administrator';
                     userRole.textContent = username;
@@ -3098,6 +3395,77 @@
                 
                 // Apply role-based restrictions
                 applyRoleRestrictions();
+                
+                // Clear temp data
+                delete window.tempLoginData;
+                
+            } else {
+                // Invalid OTP
+                otpError.style.display = 'block';
+                document.getElementById('otpInput').value = '';
+                document.getElementById('otpInput').focus();
+                
+                setTimeout(() => {
+                    otpError.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Resend OTP
+        function resendOTP() {
+            alert('OTP resent to your registered email!\n\nFor testing, use: 987654');
+            document.getElementById('otpInput').value = '';
+            document.getElementById('otpInput').focus();
+            startOTPTimer();
+        }
+
+        // Cancel OTP
+        function cancelOTP() {
+            clearInterval(otpTimerInterval);
+            document.getElementById('otpModal').style.display = 'none';
+            document.getElementById('otpInput').value = '';
+            document.getElementById('otpError').style.display = 'none';
+            delete window.tempLoginData;
+        }
+
+        // Allow Enter key to verify OTP
+        document.addEventListener('DOMContentLoaded', function() {
+            const otpInput = document.getElementById('otpInput');
+            if (otpInput) {
+                otpInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        verifyOTP();
+                    }
+                });
+            }
+        });
+
+        // Handle login
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('loginError');
+            
+            if (validCredentials[username] && validCredentials[username] === password) {
+                // Successful password verification - show OTP modal
+                failedLoginAttempts[username] = 0;
+                
+                // Store credentials temporarily for OTP verification
+                window.tempLoginData = {
+                    username: username,
+                    role: userRoles[username]
+                };
+                
+                errorElement.classList.remove('show');
+                
+                // Show OTP modal
+                document.getElementById('otpModal').style.display = 'flex';
+                document.getElementById('otpInput').value = '';
+                document.getElementById('otpInput').focus();
+                startOTPTimer();
+                
             } else {
                 // Failed login
                 if (!failedLoginAttempts[username]) {
