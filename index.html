@@ -1823,7 +1823,7 @@
                                 <td><strong>WMS_Admin</strong></td>
                                 <td>admin@okisee.co.th</td>
                                 <td>Admin</td>
-                                <td>●●●●●●●●</td>
+                                <td>admin</td>
                                 <td><span class="status-badge status-active">Active</span></td>
                                 <td>4/5/2025</td>
                                 <td>4/5/2025 11:15</td>
@@ -2198,10 +2198,13 @@
                 </div>
                 
                 <div class="role-tabs">
-                    <button class="role-tab active" onclick="switchRole('admin')">Admin Role</button>
-                    <button class="role-tab" onclick="switchRole('hr')">HR Role</button>
-                    <button class="role-tab" onclick="switchRole('warehouse')">Warehouse Role</button>
-                    <button class="role-tab" onclick="switchRole('accounting')">Accounting Role</button>
+                    <button class="role-tab active" onclick="switchRole('admin')">Admin</button>
+                    <button class="role-tab" onclick="switchRole('itsecurity')">IT Security</button>
+                    <button class="role-tab" onclick="switchRole('warehousemanager')">Warehouse Manager</button>
+                    <button class="role-tab" onclick="switchRole('warehousestaff')">Warehouse Staff</button>
+                    <button class="role-tab" onclick="switchRole('accountingmanager')">Accounting Manager</button>
+                    <button class="role-tab" onclick="switchRole('accountingstaff')">Accounting Staff</button>
+                    <button class="role-tab" onclick="switchRole('auditor')">Auditor</button>
                 </div>
 
                 <!-- Admin Role Permissions -->
@@ -2950,6 +2953,7 @@
     <script>
         // Login credentials
         const validCredentials = {
+            // Production Users
             'WMS_Admin': 'admin',
             'admin': 'admin',
             'Tony Stark': 'Tony1234',
@@ -2963,11 +2967,20 @@
             'Peter Parker': 'SpiderWeb',
             'Barbara Gordon': 'P@ssword',
             'Gwen Stacy': 'Dt7rSm',
-            'Miles Morales': 'Nb4yGx'
+            'Miles Morales': 'Nb4yGx',
+            
+            // Test Accounts (not shown in user list)
+            'Administrator': 'OK!See001',
+            'audit01': 'P@ssw0rd779',
+            'audit02': 'P@ssw0rd423',
+            'audit03': 'P@ssw0rd221',
+            'audit04': 'P@ssw0rd726',
+            'audit05': 'P@ssw0rd115'
         };
 
         // User roles for login
         const userRoles = {
+            // Production Users
             'WMS_Admin': 'Admin',
             'admin': 'Admin',
             'Tony Stark': 'Admin',
@@ -2981,7 +2994,15 @@
             'Peter Parker': 'Accounting Staff',
             'Barbara Gordon': 'Warehouse Staff',
             'Gwen Stacy': 'Accounting Staff',
-            'Miles Morales': 'Accounting Staff'
+            'Miles Morales': 'Accounting Staff',
+            
+            // Test Accounts
+            'Administrator': 'Admin',
+            'audit01': 'Auditor',
+            'audit02': 'Auditor',
+            'audit03': 'Auditor',
+            'audit04': 'Auditor',
+            'audit05': 'Auditor'
         };
 
         // Current logged in user
@@ -3090,13 +3111,122 @@
 
         // Apply role-based restrictions
         function applyRoleRestrictions() {
-            if (currentRole === 'Auditor') {
-                // Hide edit/delete buttons but allow export
+            const role = currentRole;
+            
+            // IT Security Role
+            if (role === 'IT Security') {
+                // Can only access: User Management (View), Security Settings (View), Log & Audit (All)
+                // Hide: Dashboard, Inventory, Orders
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    if (btn.textContent.includes('Dashboard') || 
+                        btn.textContent.includes('Inventory') || 
+                        btn.textContent.includes('Order')) {
+                        btn.style.display = 'none';
+                    }
+                });
+                
+                // In User Management: View only
+                document.querySelectorAll('.btn-edit, .btn-delete, .btn-primary').forEach(btn => {
+                    if (btn.textContent.includes('Add New') || 
+                        btn.textContent.includes('Save') || 
+                        btn.textContent.includes('Reset')) {
+                        btn.style.display = 'none';
+                    }
+                });
+                
+                // Security Settings: View only
+                document.querySelectorAll('#security input, #security select, #security .toggle-switch').forEach(elem => {
+                    elem.style.pointerEvents = 'none';
+                    elem.style.opacity = '0.6';
+                });
+            }
+            
+            // Warehouse Manager Role
+            else if (role === 'Warehouse Manager') {
+                // Can access: Inventory (All), Orders (All)
+                // Hide: IT Administration except if already shown
+                // No User Management access
+                document.querySelectorAll('.secondary-nav-btn').forEach(btn => {
+                    if (btn.textContent.includes('Users') || 
+                        btn.textContent.includes('Authorization') || 
+                        btn.textContent.includes('Roles')) {
+                        btn.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Warehouse Staff Role
+            else if (role === 'Warehouse Staff') {
+                // Can: View Inventory Transactions, Add Stock
+                // Can: View Order Transactions
+                // Hide: IT Administration, User Management
+                document.querySelector('.nav-btn[onclick*="toggleITAdmin"]')?.remove();
+                
+                // In Inventory: Can add stock but not approve movements
+                // In Orders: View only
+                document.querySelectorAll('#orders .btn-edit, #orders .btn-delete, #orders .btn-primary').forEach(btn => {
+                    if (!btn.textContent.includes('Search') && !btn.textContent.includes('Export')) {
+                        btn.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Accounting Manager Role
+            else if (role === 'Accounting Manager') {
+                // Can: View Inventory + Edit Reports
+                // Can: View Orders & History + Edit Reports
+                // Hide: IT Administration
+                document.querySelector('.nav-btn[onclick*="toggleITAdmin"]')?.remove();
+                
+                // In Inventory: View only + Edit reports
+                document.querySelectorAll('#inventory .btn-primary').forEach(btn => {
+                    if (!btn.textContent.includes('Search') && !btn.textContent.includes('Export')) {
+                        btn.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Accounting Staff Role
+            else if (role === 'Accounting Staff') {
+                // Can: View Inventory + Export Reports
+                // Can: View Orders + Export Reports
+                // Hide: IT Administration, all edit functions
+                document.querySelector('.nav-btn[onclick*="toggleITAdmin"]')?.remove();
+                
+                // View and export only
+                document.querySelectorAll('.btn-edit, .btn-delete, .btn-primary').forEach(btn => {
+                    if (!btn.textContent.includes('Search') && !btn.textContent.includes('Export')) {
+                        btn.style.display = 'none';
+                    }
+                });
+                
+                // Disable all inputs
+                document.querySelectorAll('input:not([type="text"]):not([type="date"]), select:not(.form-select), .toggle-switch').forEach(elem => {
+                    if (!elem.closest('.search-bar')) {
+                        elem.style.pointerEvents = 'none';
+                        elem.style.opacity = '0.6';
+                    }
+                });
+            }
+            
+            // Auditor Role
+            else if (role === 'Auditor') {
+                // View only + Export logs
+                // Hide: Dashboard, Inventory, Orders
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    if (btn.textContent.includes('Dashboard') || 
+                        btn.textContent.includes('Inventory') || 
+                        btn.textContent.includes('Order')) {
+                        btn.style.display = 'none';
+                    }
+                });
+                
+                // Hide all edit/delete buttons
                 document.querySelectorAll('.btn-edit, .btn-delete').forEach(btn => {
                     btn.style.display = 'none';
                 });
                 
-                // Hide Add New User button
+                // Hide Add/Save/Reset buttons, keep Export and Search
                 document.querySelectorAll('.btn-primary').forEach(btn => {
                     if (btn.textContent.includes('Add New') || 
                         btn.textContent.includes('Save') || 
@@ -3104,10 +3234,9 @@
                         btn.textContent.includes('View All')) {
                         btn.style.display = 'none';
                     }
-                    // Keep Export and Search buttons visible
                 });
                 
-                // Disable all inputs and selects except search/filter fields
+                // Disable all inputs except search/filter
                 document.querySelectorAll('input:not([type="date"]):not([type="text"][placeholder*="Search"]):not([type="text"][placeholder*="keyword"]), select:not(#activityTypeFilter):not(#changelogTypeFilter):not(.form-select), .toggle-switch, .custom-checkbox').forEach(elem => {
                     if (!elem.id || (!elem.id.includes('Search') && !elem.id.includes('Filter') && !elem.id.includes('Date'))) {
                         elem.style.pointerEvents = 'none';
