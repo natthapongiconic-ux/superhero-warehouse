@@ -1660,14 +1660,6 @@
                         <input type="number" class="form-input" value="0" min="0" max="10">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Password Complexity</label>
-                        <select class="form-select">
-                            <option>High (Upper, Lower, Number, Special)</option>
-                            <option>Medium (Upper, Lower, Number)</option>
-                            <option>Low (Upper, Lower)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label class="form-label">Dictionary Check</label>
                         <div class="toggle-container">
                             <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
@@ -1679,8 +1671,9 @@
                         <input type="number" class="form-input" value="90" min="30" max="365">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Password History</label>
-                        <input type="number" class="form-input" value="5" min="1" max="24">
+                        <label class="form-label">Enforce Password History</label>
+                        <input type="number" class="form-input" value="3" min="1" max="24">
+                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Remember last 3 passwords</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Multi-Factor Authentication (MFA)</label>
@@ -1704,11 +1697,15 @@
                         </div>
                     </div>
                 </div>
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; gap: 12px;">
+                    <button class="btn btn-primary" style="padding: 14px 32px;">💾 Save Configuration</button>
+                    <button class="btn btn-secondary" style="padding: 14px 32px;">↺ Reset to Default</button>
+                </div>
             </div>
 
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">Security Attempt Settings</h2>
+                    <h2 class="card-title">Security Settings</h2>
                 </div>
                 <div class="form-grid">
                     <div class="form-group">
@@ -1721,6 +1718,7 @@
                     <div class="form-group">
                         <label class="form-label">Failed Logon Attempts</label>
                         <input type="number" class="form-input" value="5" min="3" max="10">
+                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Lock account after failed attempts</small>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Lockout Duration (Minutes)</label>
@@ -1731,9 +1729,21 @@
                         <input type="number" class="form-input" value="8" min="1" max="24">
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Idle Session Time (Minutes)</label>
+                        <label class="form-label">Idle Session Timeout (Minutes)</label>
                         <input type="number" class="form-input" value="15" min="5" max="60">
+                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Auto-logout after inactivity</small>
                     </div>
+                    <div class="form-group">
+                        <label class="form-label">IP Whitelist</label>
+                        <div class="toggle-container">
+                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
+                            <span>Disabled</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; gap: 12px;">
+                    <button class="btn btn-primary" style="padding: 14px 32px;">💾 Save Configuration</button>
+                    <button class="btn btn-secondary" style="padding: 14px 32px;">↺ Reset to Default</button>
                 </div>
             </div>
 
@@ -1753,10 +1763,17 @@
                         <label class="form-label">Log Retention (Days)</label>
                         <input type="number" class="form-input" value="365" min="30" max="3650">
                     </div>
+                    <div class="form-group">
+                        <label class="form-label">Audit Trail</label>
+                        <div class="toggle-container">
+                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                            <span>Enabled</span>
+                        </div>
+                    </div>
                 </div>
-                <div style="margin-top: 24px; display: flex; gap: 12px;">
-                    <button class="btn btn-primary">💾 Save Configuration</button>
-                    <button class="btn btn-secondary">↺ Reset to Default</button>
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; gap: 12px;">
+                    <button class="btn btn-primary" style="padding: 14px 32px;">💾 Save Configuration</button>
+                    <button class="btn btn-secondary" style="padding: 14px 32px;">↺ Reset to Default</button>
                 </div>
             </div>
         </div>
@@ -1773,9 +1790,11 @@
                     <select class="form-select">
                         <option>All Roles</option>
                         <option>Admin</option>
-                        <option>HR</option>
-                        <option>Warehouse</option>
-                        <option>Accounting</option>
+                        <option>IT Security</option>
+                        <option>Warehouse Manager</option>
+                        <option>Warehouse Staff</option>
+                        <option>Accounting Manager</option>
+                        <option>Accounting Staff</option>
                     </select>
                     <select class="form-select">
                         <option>All Status</option>
@@ -1788,11 +1807,12 @@
                     <table id="usersTable">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>User</th>
                                 <th>Email</th>
                                 <th>Role</th>
                                 <th>Password</th>
                                 <th>Status</th>
+                                <th>Created Date</th>
                                 <th>Last Login</th>
                                 <th>Last Password Change</th>
                                 <th>Actions</th>
@@ -1800,13 +1820,14 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Steve Roger</td>
-                                <td>steve.roger@superhero.com</td>
+                                <td><strong>WMS_Admin</strong></td>
+                                <td>admin@okisee.co.th</td>
                                 <td>Admin</td>
-                                <td>Tk9mR#p2vL</td>
+                                <td>●●●●●●●●</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 08:30</td>
-                                <td>2024-12-28</td>
+                                <td>4/5/2025</td>
+                                <td>4/5/2025 11:15</td>
+                                <td>2/20/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1815,13 +1836,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Tony Stark</td>
+                                <td><strong>Tony Stark</strong></td>
                                 <td>tony.stark@superhero.com</td>
                                 <td>Admin</td>
-                                <td>Xr8hQw!kN4</td>
+                                <td>Tony1234</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 09:15</td>
-                                <td>2024-11-15</td>
+                                <td>8/8/2023</td>
+                                <td>12/15/2025 9:15</td>
+                                <td>10/25/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1830,28 +1852,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Bruce Banner</td>
-                                <td>bruce.banner@superhero.com</td>
-                                <td>Admin</td>
-                                <td>Ym3pDs@jF7</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-10 16:45</td>
-                                <td>2025-01-05</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">✏️</button>
-                                        <button class="btn-icon btn-delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Scott Lang</td>
+                                <td><strong>Scott Lang</strong></td>
                                 <td>scott.lang@superhero.com</td>
                                 <td>Admin</td>
-                                <td>Bf6vKm$zH9</td>
+                                <td>SCOT555</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 07:20</td>
-                                <td>2024-10-22</td>
+                                <td>1/1/2024</td>
+                                <td>12/15/2025 7:20</td>
+                                <td>12/21/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1860,13 +1868,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Charles Xavier</td>
+                                <td><strong>Charles Xavier</strong></td>
                                 <td>charles.xavier@superhero.com</td>
-                                <td>Admin</td>
+                                <td>IT Security</td>
                                 <td>Wn4rGx&tP8</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 08:00</td>
-                                <td>2024-11-30</td>
+                                <td><span class="status-badge status-inactive">Inactive</span></td>
+                                <td>2/1/2024</td>
+                                <td>9/1/2025 8:00</td>
+                                <td>10/22/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1875,13 +1884,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Clark Kent</td>
+                                <td><strong>Clark Kent</strong></td>
                                 <td>clark.kent@superhero.com</td>
                                 <td>Admin</td>
-                                <td>Zq7sLm!cJ2</td>
+                                <td>ILoveMyjob</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 09:45</td>
-                                <td>2023-12-15</td>
+                                <td>2/1/2024</td>
+                                <td>12/15/2025 9:45</td>
+                                <td>10/22/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1890,28 +1900,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Natalia Romanova</td>
-                                <td>natalia.romanova@superhero.com</td>
-                                <td>Warehouse Manager</td>
-                                <td>Ht5bNx#wR3</td>
-                                <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 08:15</td>
-                                <td>2024-12-18</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">✏️</button>
-                                        <button class="btn-icon btn-delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Bruce Wayne</td>
+                                <td><strong>Bruce Wayne</strong></td>
                                 <td>bruce.wayne@superhero.com</td>
-                                <td>Warehouse Supervisor</td>
+                                <td>Warehouse Manager</td>
                                 <td>Pv9kFd@mS6</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 06:30</td>
-                                <td>2024-11-08</td>
+                                <td>3/15/2024</td>
+                                <td>12/15/2025 6:30</td>
+                                <td>9/11/2024</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1920,13 +1916,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Dick Grayson</td>
+                                <td><strong>Dick Grayson</strong></td>
                                 <td>dick.grayson@superhero.com</td>
-                                <td>Warehouse Supervisor</td>
-                                <td>Jt8xVn!gB4</td>
+                                <td>Warehouse Staff</td>
+                                <td>Jt8x7788</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 06:45</td>
-                                <td>2024-12-12</td>
+                                <td>4/1/2024</td>
+                                <td>12/15/2025 6:45</td>
+                                <td>12/28/2024</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1935,28 +1932,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Barbara Gordon</td>
-                                <td>barbara.gordon@superhero.com</td>
-                                <td>Warehouse Supervisor</td>
-                                <td>Qw2hMp$dY7</td>
-                                <td><span class="status-badge status-inactive">Inactive</span></td>
-                                <td>2025-01-09 18:20</td>
-                                <td>2024-10-14</td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <button class="btn-icon btn-edit">✏️</button>
-                                        <button class="btn-icon btn-delete">🗑️</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Selina Kyle</td>
+                                <td><strong>Selina Kyle</strong></td>
                                 <td>selina.kyle@superhero.com</td>
-                                <td>Warehouse Supervisor</td>
-                                <td>Lr6tBx#fK9</td>
+                                <td>Warehouse Staff</td>
+                                <td>Selina123</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 07:00</td>
-                                <td>2024-11-25</td>
+                                <td>7/1/2024</td>
+                                <td>8/2/2025 22:30</td>
+                                <td>6/24/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1965,13 +1948,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Diana Prince</td>
+                                <td><strong>Diana Prince</strong></td>
                                 <td>diana.prince@superhero.com</td>
-                                <td>Shipping Coordinator</td>
+                                <td>Accounting Manager</td>
                                 <td>Vs3nZk@rH8</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 08:45</td>
-                                <td>2024-12-22</td>
+                                <td>7/1/2024</td>
+                                <td>12/15/2025 8:45</td>
+                                <td>9/22/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1980,13 +1964,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Peter Parker</td>
+                                <td><strong>Peter Parker</strong></td>
                                 <td>peter.parker@superhero.com</td>
-                                <td>Shipping Coordinator</td>
-                                <td>Cm9wTf!jL5</td>
+                                <td>Accounting Staff</td>
+                                <td>SpiderWeb</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 09:00</td>
-                                <td>2024-11-18</td>
+                                <td>9/10/2024</td>
+                                <td>12/15/2025 9:00</td>
+                                <td>3/9/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -1995,13 +1980,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Miles Morales</td>
-                                <td>miles.morales@superhero.com</td>
-                                <td>Shipping Coordinator</td>
-                                <td>Nb4yGx&pQ1</td>
+                                <td><strong>Barbara Gordon</strong></td>
+                                <td>barbara.gordon@superhero.com</td>
+                                <td>Warehouse Staff</td>
+                                <td>P@ssword</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 08:50</td>
-                                <td>2024-10-29</td>
+                                <td>1/15/2025</td>
+                                <td>12/15/2025 13:45</td>
+                                <td>10/12/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -2010,13 +1996,30 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>Gwen Stacy</td>
+                                <td><strong>Gwen Stacy</strong></td>
                                 <td>gwen.stacy@superhero.com</td>
-                                <td>Shipping Coordinator</td>
-                                <td>Dt7rSm#vX6</td>
+                                <td>Accounting Staff</td>
+                                <td>Dt7rSm</td>
                                 <td><span class="status-badge status-active">Active</span></td>
-                                <td>2025-01-11 09:10</td>
-                                <td>2025-01-01</td>
+                                <td>3/1/2025</td>
+                                <td>12/15/2025 9:10</td>
+                                <td>11/26/2025</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-edit">✏️</button>
+                                        <button class="btn-icon btn-delete">🗑️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Miles Morales</strong></td>
+                                <td>miles.morales@superhero.com</td>
+                                <td>Accounting Staff</td>
+                                <td>Nb4yGx</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>7/1/2025</td>
+                                <td>12/15/2025 8:50</td>
+                                <td>9/29/2025</td>
                                 <td>
                                     <div class="action-buttons">
                                         <button class="btn-icon btn-edit">✏️</button>
@@ -2027,6 +2030,7 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
 
@@ -2118,68 +2122,67 @@
                             <tr>
                                 <th>Module</th>
                                 <th>Admin</th>
+                                <th>IT Security</th>
                                 <th>Warehouse Manager</th>
-                                <th>Warehouse Supervisor</th>
-                                <th>Shipping Coordinator</th>
-                                <th>Auditor</th>
+                                <th>Warehouse Staff</th>
+                                <th>Accounting Manager</th>
+                                <th>Accounting Staff</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Dashboard</td>
                                 <td>✅ Full</td>
+                                <td>👁️ Read</td>
                                 <td>✅ Full</td>
-                                <td>✅ Read</td>
-                                <td>✅ Read</td>
+                                <td>👁️ Read</td>
+                                <td>👁️ Read</td>
                                 <td>👁️ Read</td>
                             </tr>
                             <tr>
                                 <td>User Management</td>
                                 <td>✅ Full</td>
-                                <td>✅ Full</td>
+                                <td>👁️ View Users</td>
                                 <td>❌ None</td>
                                 <td>❌ None</td>
-                                <td>👁️ Read</td>
+                                <td>❌ None</td>
+                                <td>❌ None</td>
                             </tr>
                             <tr>
                                 <td>Security Settings</td>
                                 <td>✅ Full</td>
-                                <td>👁️ Read</td>
+                                <td>👁️ View Only</td>
                                 <td>❌ None</td>
                                 <td>❌ None</td>
-                                <td>👁️ Read</td>
+                                <td>❌ None</td>
+                                <td>❌ None</td>
                             </tr>
                             <tr>
                                 <td>Inventory Management</td>
                                 <td>✅ Full</td>
-                                <td>✅ Full</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                                <td>👁️ Read</td>
+                                <td>❌ None</td>
+                                <td>✅ All Access<br><small>Approve Stock Movement</small></td>
+                                <td>👁️ View Transactions<br>➕ Add Stock</td>
+                                <td>👁️ View Only<br>✏️ Edit Reports</td>
+                                <td>👁️ View Only<br>📊 Export Reports</td>
                             </tr>
                             <tr>
                                 <td>Order Management</td>
                                 <td>✅ Full</td>
-                                <td>✅ Full</td>
-                                <td>✅ Full</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
+                                <td>❌ None</td>
+                                <td>✅ All Access<br><small>Approve New/Modify Order</small></td>
+                                <td>👁️ View Transactions</td>
+                                <td>👁️ View Orders & History<br>✏️ Edit Reports</td>
+                                <td>👁️ View Only<br>📊 Export Reports</td>
                             </tr>
                             <tr>
-                                <td>Shipping & Logistics</td>
+                                <td>Log & Audit</td>
                                 <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                                <td>👁️ Read</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
-                            </tr>
-                            <tr>
-                                <td>System Logs</td>
-                                <td>✅ Full</td>
-                                <td>👁️ Read</td>
+                                <td>✅ All Functions</td>
                                 <td>❌ None</td>
                                 <td>❌ None</td>
-                                <td>👁️ Read</td>
+                                <td>❌ None</td>
+                                <td>❌ None</td>
                             </tr>
                         </tbody>
                     </table>
@@ -2925,10 +2928,12 @@
                     <input type="date" id="changelogEndDate" class="form-input" value="2025-12-31">
                     <select id="changelogTypeFilter" class="form-select">
                         <option value="">All Changes</option>
-                        <option value="Configuration">Configuration</option>
-                        <option value="Program Update">Program Update</option>
-                        <option value="Security Patch">Security Patch</option>
-                        <option value="Database">Database</option>
+                        <option value="WMS">WMS</option>
+                        <option value="CONFIG">CONFIG</option>
+                        <option value="DATA">DATA</option>
+                        <option value="BUGFIX">BUGFIX</option>
+                        <option value="API">API</option>
+                        <option value="Report">Report</option>
                     </select>
                     <input type="text" id="changelogSearch" class="form-input" placeholder="🔍 Search by keyword..." style="min-width: 200px;">
                     <button class="btn btn-primary" onclick="filterChangeLogs()">🔍 Search</button>
@@ -2945,22 +2950,38 @@
     <script>
         // Login credentials
         const validCredentials = {
-            'admin': 'OK!See001',
-            'auditor01': 'P@ssw0rd779',
-            'auditor02': 'P@ssw0rd423',
-            'auditor03': 'P@ssw0rd221',
-            'auditor04': 'P@ssw0rd726',
-            'auditor05': 'P@ssw0rd115'
+            'WMS_Admin': 'admin',
+            'admin': 'admin',
+            'Tony Stark': 'Tony1234',
+            'Scott Lang': 'SCOT555',
+            'Charles Xavier': 'Wn4rGx&tP8',
+            'Clark Kent': 'ILoveMyjob',
+            'Bruce Wayne': 'Pv9kFd@mS6',
+            'Dick Grayson': 'Jt8x7788',
+            'Selina Kyle': 'Selina123',
+            'Diana Prince': 'Vs3nZk@rH8',
+            'Peter Parker': 'SpiderWeb',
+            'Barbara Gordon': 'P@ssword',
+            'Gwen Stacy': 'Dt7rSm',
+            'Miles Morales': 'Nb4yGx'
         };
 
         // User roles for login
         const userRoles = {
+            'WMS_Admin': 'Admin',
             'admin': 'Admin',
-            'auditor01': 'Auditor',
-            'auditor02': 'Auditor',
-            'auditor03': 'Auditor',
-            'auditor04': 'Auditor',
-            'auditor05': 'Auditor'
+            'Tony Stark': 'Admin',
+            'Scott Lang': 'Admin',
+            'Charles Xavier': 'IT Security',
+            'Clark Kent': 'Admin',
+            'Bruce Wayne': 'Warehouse Manager',
+            'Dick Grayson': 'Warehouse Staff',
+            'Selina Kyle': 'Warehouse Staff',
+            'Diana Prince': 'Accounting Manager',
+            'Peter Parker': 'Accounting Staff',
+            'Barbara Gordon': 'Warehouse Staff',
+            'Gwen Stacy': 'Accounting Staff',
+            'Miles Morales': 'Accounting Staff'
         };
 
         // Current logged in user
@@ -3416,89 +3437,96 @@ const orderData = [
 ];
 
 
-        // Activity Log Data for entire year 2025
+                // Activity Log Data for entire year 2025
         const activityLogData = [
-            // January 2025
-            // Additional realistic activity entries for 2025
-{ date: '2025-01-11 10:30:15', type: 'ORDER CHANGE', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'Approved Order #WH-2025-1247 | Item: Vibranium Shield x2 | Customer: Wayne Enterprises' },
-{ date: '2025-01-11 09:45:22', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Shipping Department | Device: Chrome/Windows' },
-{ date: '2025-01-11 09:30:11', type: 'ORDER CHANGE', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'Updated tracking for Order #WH-2025-1245 | Tracking: SH-2025-5645 | Status: In Transit' },
-{ date: '2025-01-10 15:20:33', type: 'ORDER CHANGE', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'Reviewed inventory levels | Flagged 5 items for reorder | Generated purchase orders' },
-{ date: '2025-01-10 14:15:45', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Completed stock count for Sector A | Updated inventory quantities | 47 items verified' },
-{ date: '2025-01-10 11:30:28', type: 'ORDER CHANGE', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'Coordinated shipment pickup for Order #WH-2025-1243 | Carrier: FedEx Priority | ETA: 2 days' },
-{ date: '2025-01-09 16:40:19', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Processed incoming delivery | SKU-001 to SKU-015 | Updated stock levels | 25 units received' },
-{ date: '2025-01-09 13:25:51', type: 'ORDER CHANGE', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'Confirmed delivery for Order #WH-2025-1245 | Customer signature received | Closed order' },
-{ date: '2025-01-08 10:15:37', type: 'ORDER CHANGE', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'Authorized emergency reorder | SKU-019 Mjolnir Replica | Quantity: 15 units | Approved budget: $149,999,985' },
-{ date: '2025-01-08 08:55:42', type: 'ORDER CHANGE', user: 'Barbara Gordon', role: 'Warehouse Supervisor', details: 'Quality inspection completed | Order #WH-2025-1246 | All items passed QC | Ready for shipping' },
-
-            { date: '2025-01-11 09:45:23', type: 'LOGIN', user: 'Clark Kent', role: 'System Admin', details: 'IP: 192.168.1.105 | Location: Metropolis Office | Device: Chrome/Windows' },
-            { date: '2025-01-11 09:15:47', type: 'LOGIN', user: 'Tony Stark', role: 'IT Head', details: 'IP: 192.168.1.87 | Location: Stark Tower | Device: Safari/MacOS' },
-            { date: '2025-01-11 09:10:12', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Shipping Department | Device: Firefox/Windows' },
-            { date: '2025-01-11 09:00:35', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Shipping Department | Device: Chrome/Windows' },
-            { date: '2025-01-11 08:50:28', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Shipping Department | Device: Edge/Windows' },
-            { date: '2025-01-11 08:45:15', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Shipping Department | Device: Chrome/Windows' },
-            { date: '2025-01-11 08:30:42', type: 'LOGIN', user: 'Steve Roger', role: 'CEO', details: 'IP: 192.168.1.10 | Location: Executive Office | Device: Safari/iPad' },
-            { date: '2025-01-11 08:25:18', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-1547 | Changed: Quantity from 500 to 750 units | Item: Arc Reactor Shields' },
-            { date: '2025-01-11 08:15:33', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'IP: 192.168.1.95 | Location: Warehouse Office | Device: Chrome/Windows' },
-            { date: '2025-01-11 07:00:45', type: 'LOGIN', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'IP: 192.168.1.135 | Location: Warehouse Floor | Device: Chrome/Android' },
-            { date: '2025-01-10 18:30:55', type: 'LOGOUT', user: 'Tony Stark', role: 'IT Head', details: 'Session Duration: 9h 15m | IP: 192.168.1.87' },
-            { date: '2025-01-10 17:15:22', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Cancelled Order #WH-2025-1545 | Item: Repulsor Gauntlets | Quantity: 100 units' },
-            
-            // February 2025
-            { date: '2025-02-15 10:30:12', type: 'LOGIN', user: 'Bruce Banner', role: 'Developer', details: 'IP: 192.168.1.77 | Location: Development Lab | Device: Firefox/Linux' },
-            { date: '2025-02-15 14:22:45', type: 'FAILED LOGIN', user: 'barbara.gordon@superhero.com', role: 'N/A', details: 'IP: 192.168.1.132 | Reason: Invalid password (Attempt 1 of 5)' },
-            { date: '2025-02-20 11:15:30', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Created new Order #WH-2025-2102 | Item: Vibranium Shields | Quantity: 300 units' },
-            
-            // March 2025
-            { date: '2025-03-05 09:12:33', type: 'LOGIN', user: 'Scott Lang', role: 'Developer', details: 'IP: 192.168.1.78 | Location: Development Lab | Device: Chrome/MacOS' },
-            { date: '2025-03-12 16:45:21', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-3156 | Changed: Delivery date moved forward by 3 days' },
-            { date: '2025-03-18 08:30:14', type: 'LOGIN', user: 'Charles Xavier', role: 'Security Officer', details: 'IP: 192.168.1.50 | Location: Security Operations | Device: Chrome/Linux' },
-            
-            // April 2025
-            { date: '2025-04-02 10:55:42', type: 'FAILED LOGIN', user: 'test.user@superhero.com', role: 'N/A', details: 'IP: 203.45.67.89 | Reason: User does not exist' },
-            { date: '2025-04-10 13:20:18', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Updated Order #WH-2025-4089 | Changed: Added rush delivery flag' },
-            { date: '2025-04-22 15:40:55', type: 'LOGOUT', user: 'Steve Roger', role: 'CEO', details: 'Session Duration: 7h 10m | IP: 192.168.1.10' },
-            
-            // May 2025
-            { date: '2025-05-08 09:15:27', type: 'LOGIN', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'IP: 192.168.1.140 | Location: Shipping Department | Device: Chrome/Windows' },
-            { date: '2025-05-15 11:33:44', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Created bulk order #WH-2025-5234 | Item: Stark Tech Components | Quantity: 1000 units' },
-            { date: '2025-05-20 14:22:16', type: 'FAILED LOGIN', user: 'admin', role: 'N/A', details: 'IP: 198.51.100.42 | Reason: Invalid password (Attempt 3 of 5)' },
-            
-            // June 2025
-            { date: '2025-06-03 08:45:39', type: 'LOGIN', user: 'Peter Parker', role: 'Shipping Coordinator', details: 'IP: 192.168.1.142 | Location: Shipping Department | Device: Chrome/Windows' },
-            { date: '2025-06-12 10:18:52', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-6145 | Changed: Shipping address updated' },
-            { date: '2025-06-25 16:55:23', type: 'LOGOUT', user: 'Tony Stark', role: 'IT Head', details: 'Session Duration: 8h 40m | IP: 192.168.1.87' },
-            
-            // July 2025
-            { date: '2025-07-07 09:22:41', type: 'LOGIN', user: 'Miles Morales', role: 'Shipping Coordinator', details: 'IP: 192.168.1.141 | Location: Shipping Department | Device: Edge/Windows' },
-            { date: '2025-07-14 13:47:28', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Cancelled Order #WH-2025-7203 | Reason: Duplicate order' },
-            { date: '2025-07-28 11:05:17', type: 'LOGIN', user: 'Gwen Stacy', role: 'Shipping Coordinator', details: 'IP: 192.168.1.143 | Location: Shipping Department | Device: Firefox/Windows' },
-            
-            // August 2025
-            { date: '2025-08-05 10:12:33', type: 'FAILED LOGIN', user: 'auditor01', role: 'N/A', details: 'IP: 192.168.1.200 | Reason: Account not yet activated' },
-            { date: '2025-08-12 14:38:19', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Created Order #WH-2025-8334 | Item: Web Shooter Components | Quantity: 150 units' },
-            { date: '2025-08-20 09:44:52', type: 'LOGIN', user: 'Natalia Romanova', role: 'Warehouse Manager', details: 'IP: 192.168.1.95 | Location: Warehouse Office | Device: Chrome/Windows' },
-            
-            // September 2025
-            { date: '2025-09-02 08:55:14', type: 'LOGIN', user: 'Bruce Banner', role: 'Developer', details: 'IP: 192.168.1.77 | Location: Development Lab | Device: Firefox/Linux' },
-            { date: '2025-09-15 12:28:47', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-9187 | Changed: Priority level upgraded to URGENT' },
-            { date: '2025-09-22 17:15:33', type: 'LOGOUT', user: 'Clark Kent', role: 'System Admin', details: 'Session Duration: 8h 20m | IP: 192.168.1.105' },
-            
-            // October 2025
-            { date: '2025-10-08 09:33:26', type: 'LOGIN', user: 'Scott Lang', role: 'Developer', details: 'IP: 192.168.1.78 | Location: Development Lab | Device: Chrome/MacOS' },
-            { date: '2025-10-16 11:42:55', type: 'ORDER CHANGE', user: 'Dick Grayson', role: 'Warehouse Supervisor', details: 'Updated Order #WH-2025-10245 | Changed: Added special handling instructions' },
-            { date: '2025-10-25 15:20:18', type: 'FAILED LOGIN', user: 'admin', role: 'N/A', details: 'IP: 172.16.254.1 | Reason: Invalid password (Attempt 2 of 5)' },
+            // December 2025 - Most Recent
+            { date: '2025-12-15 13:45:22', type: 'LOGIN', user: 'Barbara Gordon', role: 'Warehouse Staff', details: 'IP: 192.168.1.132 | Location: Warehouse Floor | Device: Chrome/Windows' },
+            { date: '2025-12-15 09:45:11', type: 'LOGIN', user: 'Clark Kent', role: 'Admin', details: 'IP: 192.168.1.105 | Location: IT Department | Device: Chrome/Windows' },
+            { date: '2025-12-15 09:15:33', type: 'LOGIN', user: 'Tony Stark', role: 'Admin', details: 'IP: 192.168.1.87 | Location: Executive Office | Device: Safari/MacOS' },
+            { date: '2025-12-15 09:10:45', type: 'LOGIN', user: 'Gwen Stacy', role: 'Accounting Staff', details: 'IP: 192.168.1.143 | Location: Accounting Department | Device: Firefox/Windows' },
+            { date: '2025-12-15 09:00:28', type: 'LOGIN', user: 'Peter Parker', role: 'Accounting Staff', details: 'IP: 192.168.1.142 | Location: Accounting Department | Device: Chrome/Windows' },
+            { date: '2025-12-15 08:50:15', type: 'LOGIN', user: 'Miles Morales', role: 'Accounting Staff', details: 'IP: 192.168.1.141 | Location: Accounting Department | Device: Edge/Windows' },
+            { date: '2025-12-15 08:45:42', type: 'LOGIN', user: 'Diana Prince', role: 'Accounting Manager', details: 'IP: 192.168.1.140 | Location: Accounting Department | Device: Chrome/Windows' },
+            { date: '2025-12-15 07:20:18', type: 'LOGIN', user: 'Scott Lang', role: 'Admin', details: 'IP: 192.168.1.78 | Location: IT Department | Device: Chrome/MacOS' },
+            { date: '2025-12-15 06:45:33', type: 'LOGIN', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'IP: 192.168.1.134 | Location: Warehouse Floor | Device: Chrome/Android' },
+            { date: '2025-12-15 06:30:55', type: 'LOGIN', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'IP: 192.168.1.133 | Location: Warehouse Office | Device: Chrome/Windows' },
             
             // November 2025
-            { date: '2025-11-04 08:18:44', type: 'LOGIN', user: 'Charles Xavier', role: 'Security Officer', details: 'IP: 192.168.1.50 | Location: Security Operations | Device: Chrome/Linux' },
-            { date: '2025-11-12 13:52:31', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Supervisor', details: 'Created large order #WH-2025-11456 | Item: Quantum Processors | Quantity: 500 units' },
-            { date: '2025-11-20 10:35:22', type: 'LOGIN', user: 'Steve Roger', role: 'CEO', details: 'IP: 192.168.1.10 | Location: Executive Office | Device: Safari/iPad' },
+            { date: '2025-11-26 14:25:12', type: 'PASSWORD CHANGE', user: 'Gwen Stacy', role: 'Accounting Staff', details: 'Password successfully updated | Last change: 180 days ago' },
+            { date: '2025-11-20 10:30:45', type: 'ORDER CHANGE', user: 'Diana Prince', role: 'Accounting Manager', details: 'Exported Order Report | Date Range: Nov 1-20 | Format: Excel | 245 orders' },
+            { date: '2025-11-15 16:15:22', type: 'INVENTORY CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved stock movement | SKU-025 to SKU-042 | Location: Sector A to Sector B | 150 units' },
+            { date: '2025-11-10 09:45:33', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved new order | Order #WH-2025-1148 | Customer: Stark Industries | Total: $12,500,000' },
+            { date: '2025-11-05 13:20:18', type: 'LOGIN', user: 'Diana Prince', role: 'Accounting Manager', details: 'IP: 192.168.1.140 | Location: Accounting Department | Device: Chrome/Windows' },
             
-            // December 2025
-            { date: '2025-12-03 09:25:16', type: 'LOGIN', user: 'Tony Stark', role: 'IT Head', details: 'IP: 192.168.1.87 | Location: Stark Tower | Device: Safari/MacOS' },
-            { date: '2025-12-10 14:15:42', type: 'ORDER CHANGE', user: 'Selina Kyle', role: 'Warehouse Supervisor', details: 'Modified Order #WH-2025-12389 | Changed: Split shipment into 3 deliveries' },
-            { date: '2025-12-15 16:48:29', type: 'LOGOUT', user: 'Diana Prince', role: 'Shipping Coordinator', details: 'Session Duration: 7h 03m | IP: 192.168.1.140' }
+            // October 2025
+            { date: '2025-10-25 11:30:45', type: 'PASSWORD CHANGE', user: 'Tony Stark', role: 'Admin', details: 'Password successfully updated | Last change: 90 days ago' },
+            { date: '2025-10-22 15:40:22', type: 'PASSWORD CHANGE', user: 'Charles Xavier', role: 'IT Security', details: 'Password successfully updated | Last change: 180 days ago' },
+            { date: '2025-10-22 14:20:11', type: 'PASSWORD CHANGE', user: 'Clark Kent', role: 'Admin', details: 'Password successfully updated | Last change: 90 days ago' },
+            { date: '2025-10-12 10:15:33', type: 'PASSWORD CHANGE', user: 'Barbara Gordon', role: 'Warehouse Staff', details: 'Password successfully updated | Last change: 365 days ago' },
+            { date: '2025-10-10 16:25:44', type: 'INVENTORY CHANGE', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'Added stock | SKU-015 Repulsor Ray Gauntlet | Quantity: 25 units | Location: Sector C' },
+            { date: '2025-10-05 09:30:12', type: 'ORDER CHANGE', user: 'Peter Parker', role: 'Accounting Staff', details: 'Exported order report | Date Range: Oct 1-5 | Format: CSV | 87 orders' },
+            
+            // September 2025
+            { date: '2025-09-29 13:45:28', type: 'PASSWORD CHANGE', user: 'Miles Morales', role: 'Accounting Staff', details: 'Password successfully updated | Last change: 60 days ago' },
+            { date: '2025-09-22 10:20:15', type: 'PASSWORD CHANGE', user: 'Diana Prince', role: 'Accounting Manager', details: 'Password successfully updated | Last change: 90 days ago' },
+            { date: '2025-09-15 14:35:42', type: 'INVENTORY CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved stock movement | SKU-001 Vibranium Shield | Quantity: 50 units | Destination: Customer Shipment' },
+            { date: '2025-09-11 08:15:23', type: 'PASSWORD CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Password successfully updated | Last change: 365 days ago' },
+            { date: '2025-09-05 11:40:18', type: 'ORDER CHANGE', user: 'Gwen Stacy', role: 'Accounting Staff', details: 'Exported order report | Date Range: Sep 1-5 | Format: Excel | 112 orders' },
+            { date: '2025-09-01 08:00:33', type: 'LOGIN', user: 'Charles Xavier', role: 'IT Security', details: 'IP: 192.168.1.50 | Location: Security Operations | Device: Chrome/Linux' },
+            
+            // August 2025
+            { date: '2025-08-20 16:30:12', type: 'INVENTORY CHANGE', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'Added stock | SKU-008 Web Shooter Pro | Quantity: 100 units | Receiving: Delivery #DL-2025-0820' },
+            { date: '2025-08-15 10:25:45', type: 'ORDER CHANGE', user: 'Diana Prince', role: 'Accounting Manager', details: 'Edited order report | Report ID: RPT-2025-0815 | Added custom filters for Q3 analysis' },
+            { date: '2025-08-10 13:15:33', type: 'INVENTORY CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved emergency stock movement | SKU-019 Mjolnir Replica | Critical: Low Stock Alert' },
+            { date: '2025-08-02 22:30:18', type: 'LOGIN', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'IP: 192.168.1.135 | Location: Warehouse Floor | Device: Chrome/Android' },
+            
+            // July 2025
+            { date: '2025-07-28 14:45:22', type: 'INVENTORY CHANGE', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'Viewed inventory transaction | SKU-026 Tesseract Power Cell | No changes made' },
+            { date: '2025-07-20 11:30:15', type: 'ORDER CHANGE', user: 'Miles Morales', role: 'Accounting Staff', details: 'Exported order report | Date Range: Jul 1-20 | Format: PDF | 178 orders' },
+            { date: '2025-07-15 09:25:44', type: 'INVENTORY CHANGE', user: 'Barbara Gordon', role: 'Warehouse Staff', details: 'Added stock | SKU-021 Stark Phone | Quantity: 500 units | Bulk delivery processed' },
+            { date: '2025-07-10 16:15:33', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Modified order approval | Order #WH-2025-0710 | Changed delivery schedule | Approved' },
+            
+            // June 2025
+            { date: '2025-06-24 18:20:12', type: 'PASSWORD CHANGE', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'Password successfully updated | Last change: 210 days ago' },
+            { date: '2025-06-15 10:30:45', type: 'INVENTORY CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved stock movement | Multiple SKUs | Monthly inventory rebalancing | 25 items affected' },
+            { date: '2025-06-10 14:25:33', type: 'ORDER CHANGE', user: 'Diana Prince', role: 'Accounting Manager', details: 'Viewed order history | Customer: Wayne Enterprises | Date Range: Jan-Jun 2025' },
+            { date: '2025-06-05 09:15:22', type: 'LOGIN', user: 'Peter Parker', role: 'Accounting Staff', details: 'IP: 192.168.1.142 | Location: Accounting Department | Device: Chrome/Windows' },
+            
+            // May 2025
+            { date: '2025-05-20 11:40:18', type: 'INVENTORY CHANGE', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'Added stock | SKU-043 Vibranium Raw Ore | Quantity: 75kg | High-value material received' },
+            { date: '2025-05-15 13:25:45', type: 'ORDER CHANGE', user: 'Peter Parker', role: 'Accounting Staff', details: 'Exported order report | Date Range: May 1-15 | Format: Excel | 134 orders' },
+            { date: '2025-05-10 10:15:33', type: 'INVENTORY CHANGE', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'Viewed inventory transactions | SKU-006 Iron Man Suit MK-85 | Custom order verification' },
+            { date: '2025-05-05 16:30:22', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved new order | Order #WH-2025-0505 | Customer: S.H.I.E.L.D | Total: $85,000,000' },
+            
+            // April 2025
+            { date: '2025-04-25 14:20:12', type: 'INVENTORY CHANGE', user: 'Barbara Gordon', role: 'Warehouse Staff', details: 'Added stock | SKU-028 Wakanda Battle Suit | Quantity: 15 units | Special order delivery' },
+            { date: '2025-04-20 10:35:45', type: 'ORDER CHANGE', user: 'Gwen Stacy', role: 'Accounting Staff', details: 'Viewed order transactions | Customer: Avengers Tower | Q1 2025 summary' },
+            { date: '2025-04-15 11:15:33', type: 'FAILED LOGIN', user: 'test@superhero.com', role: 'N/A', details: 'IP: 203.45.67.89 | Reason: User does not exist' },
+            { date: '2025-04-10 09:25:22', type: 'INVENTORY CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved stock movement | SKU-037 Infinity Gauntlet Glove | Low stock reorder approved' },
+            
+            // March 2025
+            { date: '2025-03-25 13:45:18', type: 'ORDER CHANGE', user: 'Miles Morales', role: 'Accounting Staff', details: 'Exported order report | Date Range: Mar 1-25 | Format: CSV | 156 orders' },
+            { date: '2025-03-20 10:30:33', type: 'INVENTORY CHANGE', user: 'Selina Kyle', role: 'Warehouse Staff', details: 'Added stock | SKU-011 Repulsor Ray Gauntlet | Quantity: 45 units | Restock completed' },
+            { date: '2025-03-15 14:25:45', type: 'LOGIN', user: 'Diana Prince', role: 'Accounting Manager', details: 'IP: 192.168.1.140 | Location: Accounting Department | Device: Chrome/Windows' },
+            { date: '2025-03-09 16:15:22', type: 'PASSWORD CHANGE', user: 'Peter Parker', role: 'Accounting Staff', details: 'Password successfully updated | Last change: 120 days ago' },
+            { date: '2025-03-01 09:10:11', type: 'LOGIN', user: 'Gwen Stacy', role: 'Accounting Staff', details: 'IP: 192.168.1.143 | Location: Accounting Department | Device: Firefox/Windows' },
+            
+            // February 2025
+            { date: '2025-02-20 11:35:28', type: 'PASSWORD CHANGE', user: 'WMS_Admin', role: 'Admin', details: 'Password successfully updated | System administrator password changed' },
+            { date: '2025-02-15 10:25:45', type: 'ORDER CHANGE', user: 'Diana Prince', role: 'Accounting Manager', details: 'Edited order report | Report ID: RPT-2025-0215 | Quarterly financial analysis' },
+            { date: '2025-02-10 14:15:33', type: 'INVENTORY CHANGE', user: 'Dick Grayson', role: 'Warehouse Staff', details: 'Viewed inventory transactions | Monthly stock verification | All sectors checked' },
+            { date: '2025-02-05 09:30:22', type: 'FAILED LOGIN', user: 'barbara.gordon@superhero.com', role: 'N/A', details: 'IP: 192.168.1.132 | Reason: Invalid password (Attempt 1 of 5)' },
+            
+            // January 2025
+            { date: '2025-01-25 13:20:18', type: 'ORDER CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved order modification | Order #WH-2025-0125 | Quantity adjustment approved' },
+            { date: '2025-01-20 10:45:33', type: 'INVENTORY CHANGE', user: 'Barbara Gordon', role: 'Warehouse Staff', details: 'Added stock | SKU-002 Arc Reactor MK-50 | Quantity: 10 units | High-value items secured' },
+            { date: '2025-01-15 14:30:45', type: 'LOGIN', user: 'Barbara Gordon', role: 'Warehouse Staff', details: 'IP: 192.168.1.132 | Location: Warehouse Floor | Device: Chrome/Windows' },
+            { date: '2025-01-10 11:15:22', type: 'ORDER CHANGE', user: 'Peter Parker', role: 'Accounting Staff', details: 'Exported order report | Date Range: Jan 1-10 | Format: Excel | 92 orders' },
+            { date: '2025-01-05 09:25:11', type: 'INVENTORY CHANGE', user: 'Bruce Wayne', role: 'Warehouse Manager', details: 'Approved stock movement | New Year inventory redistribution | 30 SKUs affected' },
+            { date: '2025-01-01 08:15:33', type: 'LOGIN', user: 'Clark Kent', role: 'Admin', details: 'IP: 192.168.1.105 | Location: IT Department | Device: Chrome/Windows | New Year system check' }
         ];
+
+
 
         // Filter and display activity logs
         function filterActivityLogs() {
@@ -3604,141 +3632,82 @@ const orderData = [
             alert(`Activity log exported successfully!\nRecords: ${filtered.length}\nFile: ${filename}`);
         }
 
-        // Change Log Data for entire year 2025
+                // Change Log Data for 2025
         const changeLogData = [
             {
-                date: '2025-12-15 16:00:00',
-                type: 'Security Patch',
-                title: 'Security Update v4.2.1',
-                description: 'Year-end security hardening update',
-                changedBy: 'Tony Stark',
-                approvedBy: 'Steve Roger',
-                details: 'Applied latest security patches for SSL/TLS protocols, Updated firewall rules, Implemented enhanced DDoS protection, Patched zero-day vulnerabilities in authentication module',
-                status: 'Successfully deployed',
-                downtime: '10 minutes'
+                date: '2025-07-01 21:00:22',
+                timestamp: '189',
+                hex: '0x00412973',
+                user: 'Clark Kent',
+                type: 'UPDATE',
+                action: 'API Config',
+                details: 'Files Updated - API configuration parameters modified for enhanced performance'
             },
             {
-                date: '2025-11-20 14:30:00',
-                type: 'Program Update',
-                title: 'Application Update v3.5.0',
-                description: 'Q4 Feature Release',
-                changedBy: 'Bruce Banner',
-                approvedBy: 'Tony Stark',
-                details: 'New inventory forecasting AI module, Enhanced mobile app integration, Automated backup scheduling, Performance improvements for large datasets, New dashboard widgets',
-                status: 'Successfully deployed',
-                downtime: 'None - Rolling deployment'
+                date: '2025-07-01 21:00:22',
+                timestamp: '189',
+                hex: '0x00412973',
+                user: 'Clark Kent',
+                type: 'UPDATE',
+                action: 'appserver',
+                details: 'Files Updated - Application server configuration updated to v2.1.5'
             },
             {
-                date: '2025-10-10 10:15:00',
-                type: 'Security Patch',
-                title: 'Advanced Security Enhancement v3.9.0',
-                description: 'Comprehensive security hardening and access control improvements',
-                changedBy: 'Charles Xavier',
-                approvedBy: 'Steve Roger',
-                details: 'Implemented advanced role-based access control system, Enhanced audit logging with granular permissions tracking, Added read-only access controls for compliance, Strengthened session management and timeout policies, Implemented comprehensive activity monitoring',
-                status: 'Completed',
-                downtime: 'None'
+                date: '2025-06-26 12:25:22',
+                timestamp: '458',
+                hex: '0x00412975',
+                user: 'Scott Lang',
+                type: 'UPDATE',
+                action: 'WMS DATA',
+                details: 'Files Updated - Warehouse management system data synchronized'
             },
             {
-                date: '2025-09-05 18:00:00',
-                type: 'Database',
-                title: 'Database Optimization v2.8',
-                description: 'Q3 Database performance tuning',
-                changedBy: 'Scott Lang',
-                approvedBy: 'Bruce Banner',
-                details: 'Optimized slow-running queries, Added new database indexes for inventory tables, Implemented query caching layer, Database cleanup of archived records, Vacuum and analyze all tables',
-                status: 'Successfully completed',
-                downtime: '30 minutes (planned maintenance)'
+                date: '2025-06-10 23:00:22',
+                timestamp: '123',
+                hex: '0x00412973',
+                user: 'Clark Kent',
+                type: 'UPDATE',
+                action: 'ITEMUPT',
+                details: 'Files Updated - Item update procedure modified for inventory management'
             },
             {
-                date: '2025-08-12 09:00:00',
-                type: 'Security Patch',
-                title: 'Critical Security Hotfix v3.9.5',
-                description: 'Emergency patch for authentication bypass',
-                changedBy: 'Charles Xavier',
-                approvedBy: 'Steve Roger',
-                details: 'Fixed critical authentication bypass vulnerability (CVE-2025-8877), Updated session management, Forced password reset for all admin accounts, Enhanced brute force protection, Added IP-based rate limiting',
-                status: 'Emergency deployment successful',
-                downtime: '5 minutes'
+                date: '2025-04-15 20:00:00',
+                timestamp: '661',
+                hex: '0x00002978',
+                user: 'Clark Kent',
+                type: 'UPDATE',
+                action: 'BUGFIX',
+                details: 'Files Updated - Critical bug fixes applied to order processing module'
             },
             {
-                date: '2025-07-22 15:30:00',
-                type: 'Program Update',
-                title: 'Mid-Year Update v3.0.0',
-                description: 'Major feature release with UI overhaul',
-                changedBy: 'Bruce Banner',
-                approvedBy: 'Tony Stark',
-                details: 'Complete UI redesign with modern aesthetics, New Role Management module, Enhanced export functionality for all reports, Multi-language support (English, Spanish, Chinese), Dark mode implementation',
-                status: 'Successfully deployed',
-                downtime: '1 hour (planned)'
+                date: '2025-02-24 13:00:15',
+                timestamp: '312',
+                hex: '0x00002978',
+                user: 'Tony Stark',
+                type: 'UPDATE',
+                action: 'WMS CONFIG',
+                details: 'Files Updated - WMS configuration settings updated for security compliance'
             },
             {
-                date: '2025-06-18 11:00:00',
-                type: 'Configuration',
-                title: 'Backup Policy Update',
-                description: 'Enhanced backup and disaster recovery procedures',
-                changedBy: 'Tony Stark',
-                approvedBy: 'Steve Roger',
-                details: 'Implemented hourly incremental backups, Daily full system backups, Weekly off-site backup sync, 90-day backup retention policy, Automated backup verification and testing',
-                status: 'Active',
-                downtime: 'None'
+                date: '2025-01-16 18:00:15',
+                timestamp: '123',
+                hex: '0x00002810',
+                user: 'Clark Kent',
+                type: 'UPDATE',
+                action: 'WMS DATA',
+                details: 'Files Updated - Database schema updates and data migration completed'
             },
             {
-                date: '2025-05-10 13:45:00',
-                type: 'Security Patch',
-                title: 'Security Update v3.7.0',
-                description: 'Q2 Security enhancements',
-                changedBy: 'Charles Xavier',
-                approvedBy: 'Steve Roger',
-                details: 'Upgraded TLS to version 1.3, Implemented certificate pinning, Enhanced password encryption with bcrypt, Added security headers (HSTS, CSP, X-Frame-Options), Updated dependency packages',
-                status: 'Successfully deployed',
-                downtime: '15 minutes'
-            },
-            {
-                date: '2025-04-08 16:20:00',
-                type: 'Database',
-                title: 'Database Migration v2.5',
-                description: 'Schema update for new features',
-                changedBy: 'Scott Lang',
-                approvedBy: 'Bruce Banner',
-                details: 'Added new tables for audit logging, Modified user table to support MFA tokens, Created indexes for faster reporting queries, Migrated legacy data to new schema, Tested rollback procedures',
-                status: 'Successfully completed',
-                downtime: '45 minutes'
-            },
-            {
-                date: '2025-03-15 10:00:00',
-                type: 'Program Update',
-                title: 'Spring Update v2.8.0',
-                description: 'Q1 Feature enhancements',
-                changedBy: 'Bruce Banner',
-                approvedBy: 'Tony Stark',
-                details: 'New advanced search functionality, Export to Excel for user management, Enhanced activity logging with full-year history, Improved error handling and user notifications, API rate limiting implementation',
-                status: 'Successfully deployed',
-                downtime: '30 minutes'
-            },
-            {
-                date: '2025-02-20 14:00:00',
-                type: 'Configuration',
-                title: 'MFA Enforcement Policy',
-                description: 'Mandatory MFA for all admin users',
-                changedBy: 'Charles Xavier',
-                approvedBy: 'Steve Roger',
-                details: 'Enforced Multi-Factor Authentication for Admin role, Implemented TOTP-based authentication, Email-based backup codes, Grace period notification sent to all admins, Training materials distributed',
-                status: 'Enforced',
-                downtime: 'None'
-            },
-            {
-                date: '2025-01-10 22:30:00',
-                type: 'Security Patch',
-                title: 'Security Update v3.8.2',
-                description: 'Critical security patch applied',
-                changedBy: 'Tony Stark',
-                approvedBy: 'Steve Roger',
-                details: 'Fixed SQL injection vulnerability in inventory search module, Updated authentication token generation to use stronger cryptographic algorithm, Patched cross-site scripting (XSS) vulnerability in user profile section',
-                status: 'Successfully deployed',
-                downtime: '15 minutes'
+                date: '2025-01-15 23:00:12',
+                timestamp: '489',
+                hex: '0x22002966',
+                user: 'Clark Kent',
+                type: 'UPDATE',
+                action: 'WMS Report',
+                details: 'Files Updated - Reporting module templates and queries updated'
             }
         ];
+
 
         // Filter and display change logs
         function filterChangeLogs() {
@@ -3750,12 +3719,10 @@ const orderData = [
             const filtered = changeLogData.filter(log => {
                 const logDate = log.date.split(' ')[0];
                 const matchesDate = logDate >= startDate && logDate <= endDate;
-                const matchesType = !typeFilter || log.type === typeFilter;
+                const matchesType = !typeFilter || log.action.toLowerCase().includes(typeFilter.toLowerCase());
                 const matchesKeyword = !searchKeyword || 
-                    log.title.toLowerCase().includes(searchKeyword) ||
-                    log.description.toLowerCase().includes(searchKeyword) ||
-                    log.changedBy.toLowerCase().includes(searchKeyword) ||
-                    log.approvedBy.toLowerCase().includes(searchKeyword) ||
+                    log.user.toLowerCase().includes(searchKeyword) ||
+                    log.action.toLowerCase().includes(searchKeyword) ||
                     log.details.toLowerCase().includes(searchKeyword);
                 
                 return matchesDate && matchesType && matchesKeyword;
@@ -3779,11 +3746,11 @@ const orderData = [
                         <thead>
                             <tr>
                                 <th>Date & Time</th>
+                                <th>Timestamp</th>
+                                <th>Hex</th>
+                                <th>User</th>
                                 <th>Type</th>
-                                <th>Title</th>
-                                <th>Changed By</th>
-                                <th>Approved By</th>
-                                <th>Status</th>
+                                <th>Action</th>
                                 <th>Details</th>
                             </tr>
                         </thead>
@@ -3791,19 +3758,17 @@ const orderData = [
             `;
             
             logs.forEach(log => {
-                const typeColor = log.type === 'Security Patch' ? 'var(--danger)' :
-                                 log.type === 'Program Update' ? 'var(--accent)' :
-                                 log.type === 'Database' ? 'var(--warning)' : 'var(--success)';
+                const typeColor = log.type === 'UPDATE' ? 'var(--accent)' : 'var(--success)';
                 
                 html += `
                     <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="white-space: nowrap;">${log.date}</td>
+                        <td style="white-space: nowrap; font-family: monospace;">${log.date}</td>
+                        <td style="font-family: monospace; font-size: 11px;">${log.timestamp}</td>
+                        <td style="font-family: monospace; font-size: 11px; color: var(--accent);">${log.hex}</td>
+                        <td><strong>${log.user}</strong></td>
                         <td><span style="color: ${typeColor}; font-weight: 600;">${log.type}</span></td>
-                        <td><strong>${log.title}</strong><br><small style="color: var(--text-secondary);">${log.description}</small></td>
-                        <td>${log.changedBy}</td>
-                        <td>${log.approvedBy}</td>
-                        <td><span class="status-badge status-active">${log.status}</span></td>
-                        <td style="font-size: 12px; max-width: 300px;">${log.details}${log.downtime ? '<br><strong>Downtime:</strong> ' + log.downtime : ''}</td>
+                        <td style="font-weight: 600;">${log.action}</td>
+                        <td style="font-size: 12px;">${log.details}</td>
                     </tr>
                 `;
             });
@@ -3813,7 +3778,7 @@ const orderData = [
                     </table>
                 </div>
                 <div style="margin-top: 20px; text-align: center; color: var(--text-secondary); font-size: 13px;">
-                    Showing ${logs.length} of ${changeLogData.length} total changes
+                    Showing ${logs.length} of ${changeLogData.length} total system changes
                 </div>
             `;
             
@@ -3830,28 +3795,25 @@ const orderData = [
             const filtered = changeLogData.filter(log => {
                 const logDate = log.date.split(' ')[0];
                 const matchesDate = logDate >= startDate && logDate <= endDate;
-                const matchesType = !typeFilter || log.type === typeFilter;
+                const matchesType = !typeFilter || log.action.toLowerCase().includes(typeFilter.toLowerCase());
                 const matchesKeyword = !searchKeyword || 
-                    log.title.toLowerCase().includes(searchKeyword) ||
-                    log.description.toLowerCase().includes(searchKeyword) ||
-                    log.changedBy.toLowerCase().includes(searchKeyword) ||
-                    log.approvedBy.toLowerCase().includes(searchKeyword);
+                    log.user.toLowerCase().includes(searchKeyword) ||
+                    log.action.toLowerCase().includes(searchKeyword) ||
+                    log.details.toLowerCase().includes(searchKeyword);
                 
                 return matchesDate && matchesType && matchesKeyword;
             });
             
-            let csvContent = 'Date,Type,Title,Description,Changed By,Approved By,Status,Downtime,Details\n';
+            let csvContent = 'Date,Timestamp,Hex,User,Type,Action,Details\n';
             
             filtered.forEach(log => {
                 const row = [
                     log.date,
+                    log.timestamp,
+                    log.hex,
+                    log.user,
                     log.type,
-                    `"${log.title}"`,
-                    `"${log.description}"`,
-                    log.changedBy,
-                    log.approvedBy,
-                    log.status,
-                    log.downtime || 'None',
+                    log.action,
                     `"${log.details.replace(/"/g, '""')}"`
                 ];
                 csvContent += row.join(',') + '\n';
