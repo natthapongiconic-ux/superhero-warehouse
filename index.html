@@ -2054,8 +2054,19 @@
                         <tbody>
                             <tr>
                                 <td><strong>Admin</strong></td>
-                                <td>6</td>
-                                <td>Full System Access, User Management, Security Settings, All Logs</td>
+                                <td>5</td>
+                                <td>Full System Access, User Management, Security Settings, All Logs, All Modules</td>
+                                <td><span class="status-badge status-enabled">Enabled</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn-icon btn-edit">✏️</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>IT Security</strong></td>
+                                <td>1</td>
+                                <td>View Users, View Security Settings, All Log & Audit Functions</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -2066,7 +2077,7 @@
                             <tr>
                                 <td><strong>Warehouse Manager</strong></td>
                                 <td>1</td>
-                                <td>User Management, Inventory Control, Order Approval, System Reports</td>
+                                <td>Inventory Control (All Access + Approve Stock Movement), Order Management (All Access + Approve Orders)</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -2075,9 +2086,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Warehouse Supervisor</strong></td>
-                                <td>4</td>
-                                <td>Inventory Management, Order Processing, Stock Management, Warehouse Logs</td>
+                                <td><strong>Warehouse Staff</strong></td>
+                                <td>3</td>
+                                <td>Inventory (View Transactions + Add Stock), Orders (View Transactions)</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -2086,9 +2097,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Shipping Coordinator</strong></td>
-                                <td>4</td>
-                                <td>Order Fulfillment, Shipping Management, Tracking Reports, Customer Updates</td>
+                                <td><strong>Accounting Manager</strong></td>
+                                <td>1</td>
+                                <td>Inventory (View + Edit Reports), Orders (View + Edit Reports)</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -2097,9 +2108,9 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><strong>Auditor</strong></td>
-                                <td>5</td>
-                                <td>Read-Only Access to All Modules, Activity Logs, Change Logs</td>
+                                <td><strong>Accounting Staff</strong></td>
+                                <td>3</td>
+                                <td>Inventory (View + Export Reports), Orders (View + Export Reports)</td>
                                 <td><span class="status-badge status-enabled">Enabled</span></td>
                                 <td>
                                     <div class="action-buttons">
@@ -2924,7 +2935,7 @@
         <div id="changelog" class="content-section">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">Application Change Log</h2>
+                    <h2 class="card-title">WMS Change Log</h2>
                 </div>
                 <div class="search-bar">
                     <input type="date" id="changelogStartDate" class="form-input" value="2025-01-01">
@@ -3875,7 +3886,6 @@ const orderData = [
                         <thead>
                             <tr>
                                 <th>Date & Time</th>
-                                <th>Timestamp</th>
                                 <th>Hex</th>
                                 <th>User</th>
                                 <th>Type</th>
@@ -3892,7 +3902,6 @@ const orderData = [
                 html += `
                     <tr style="border-bottom: 1px solid var(--border);">
                         <td style="white-space: nowrap; font-family: monospace;">${log.date}</td>
-                        <td style="font-family: monospace; font-size: 11px;">${log.timestamp}</td>
                         <td style="font-family: monospace; font-size: 11px; color: var(--accent);">${log.hex}</td>
                         <td><strong>${log.user}</strong></td>
                         <td><span style="color: ${typeColor}; font-weight: 600;">${log.type}</span></td>
@@ -3933,12 +3942,11 @@ const orderData = [
                 return matchesDate && matchesType && matchesKeyword;
             });
             
-            let csvContent = 'Date,Timestamp,Hex,User,Type,Action,Details\n';
+            let csvContent = 'Date,Hex,User,Type,Action,Details\n';
             
             filtered.forEach(log => {
                 const row = [
                     log.date,
-                    log.timestamp,
                     log.hex,
                     log.user,
                     log.type,
