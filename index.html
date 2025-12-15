@@ -1539,7 +1539,7 @@
                         <p>Warehouse Management System</p>
                     </div>
                 </div>
-                <div style="display: flex; align-items: center; gap: 16px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
                     <div class="user-info">
                         <div class="user-avatar">SA</div>
                         <div class="user-details">
@@ -1547,6 +1547,9 @@
                             <div class="user-role">Clark Kent</div>
                         </div>
                     </div>
+                    <button class="btn btn-primary" onclick="goToDashboard()" style="white-space: nowrap;">
+                        🏠 Dashboard
+                    </button>
                     <button class="btn btn-danger" onclick="handleLogout()" style="white-space: nowrap;">
                         🚪 Logout
                     </button>
@@ -1918,40 +1921,10 @@
                 </div>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label">Minimum Password Length</label>
-                        <input type="number" class="form-input" value="6" min="6" max="32">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Minimum Number of Digits</label>
-                        <input type="number" class="form-input" value="1" min="0" max="10">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Minimum Special Characters</label>
-                        <input type="number" class="form-input" value="0" min="0" max="10">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Minimum Upper Case Characters</label>
-                        <input type="number" class="form-input" value="0" min="0" max="10">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Minimum Lower Case Characters</label>
-                        <input type="number" class="form-input" value="1" min="0" max="10">
-                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">At least 1 lowercase letter</small>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Password Age (Days)</label>
-                        <input type="number" class="form-input" value="90" min="30" max="365">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Enforce Password History</label>
-                        <input type="number" class="form-input" value="3" min="1" max="24">
-                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Remember last 3 passwords</small>
-                    </div>
-                    <div class="form-group">
                         <label class="form-label">Multi-Factor Authentication (MFA)</label>
                         <div class="toggle-container">
-                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
-                            <span>Disabled</span>
+                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                            <span>Enabled</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -1967,6 +1940,36 @@
                             <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
                             <span>Disabled</span>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Password Length</label>
+                        <input type="number" class="form-input" value="6" min="6" max="32">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Upper Case Characters</label>
+                        <input type="number" class="form-input" value="1" min="0" max="10">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Lower Case Characters</label>
+                        <input type="number" class="form-input" value="1" min="0" max="10">
+                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">At least 1 lowercase letter</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Number of Digits</label>
+                        <input type="number" class="form-input" value="1" min="0" max="10">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Minimum Special Characters</label>
+                        <input type="number" class="form-input" value="0" min="0" max="10">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password Age (Days)</label>
+                        <input type="number" class="form-input" value="90" min="30" max="365">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Enforce Password History</label>
+                        <input type="number" class="form-input" value="3" min="1" max="24">
+                        <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Remember last 3 passwords</small>
                     </div>
                 </div>
                 <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; gap: 12px;">
@@ -1988,6 +1991,13 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="form-label">IP Whitelist</label>
+                        <div class="toggle-container">
+                            <div class="toggle-switch active" onclick="toggleSwitch(this)"></div>
+                            <span>Enabled</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="form-label">Failed Logon Attempts</label>
                         <input type="number" class="form-input" value="5" min="3" max="10">
                         <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Lock account after failed attempts</small>
@@ -2004,13 +2014,6 @@
                         <label class="form-label">Idle Session Timeout (Minutes)</label>
                         <input type="number" class="form-input" value="15" min="5" max="60">
                         <small style="color: var(--text-secondary); font-size: 11px; margin-top: 4px; display: block;">Auto-logout after inactivity</small>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">IP Whitelist</label>
-                        <div class="toggle-container">
-                            <div class="toggle-switch" onclick="toggleSwitch(this)"></div>
-                            <span>Disabled</span>
-                        </div>
                     </div>
                 </div>
                 <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; gap: 12px;">
@@ -3007,7 +3010,7 @@
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
                                         <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
@@ -3052,7 +3055,7 @@
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
                                         <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
@@ -3117,7 +3120,7 @@
                                 </div>
                                 <div class="menu-item">
                                     <div class="checkbox-wrapper">
-                                        <div class="custom-checkbox checked" onclick="toggleCheckbox(this)"></div>
+                                        <div class="custom-checkbox" onclick="toggleCheckbox(this)"></div>
                                         <span class="menu-item-label">Modify Reporting</span>
                                     </div>
                                 </div>
@@ -3335,6 +3338,26 @@
                 });
                 document.querySelector('.nav-btn').classList.add('active');
             }
+        }
+
+        // Go to Dashboard function
+        function goToDashboard() {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show dashboard
+            document.getElementById('dashboard').classList.add('active');
+            
+            // Update nav buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.nav-btn[onclick*="dashboard"]')?.classList.add('active');
+            
+            // Hide IT Admin nav if open
+            document.getElementById('itAdminNav')?.classList.remove('show');
         }
 
         // OTP Timer
@@ -3590,15 +3613,8 @@
             
             // Auditor Role
             else if (role === 'Auditor') {
-                // View only + Export logs
-                // Hide: Dashboard, Inventory, Orders
-                document.querySelectorAll('.nav-btn').forEach(btn => {
-                    if (btn.textContent.includes('Dashboard') || 
-                        btn.textContent.includes('Inventory') || 
-                        btn.textContent.includes('Order')) {
-                        btn.style.display = 'none';
-                    }
-                });
+                // Can access ALL menus and functions BUT read-only (no changes allowed)
+                // Show all navigation: Dashboard, Inventory, Orders, IT Administration
                 
                 // Hide all edit/delete buttons
                 document.querySelectorAll('.btn-edit, .btn-delete').forEach(btn => {
@@ -3606,18 +3622,30 @@
                 });
                 
                 // Hide Add/Save/Reset buttons, keep Export and Search
-                document.querySelectorAll('.btn-primary').forEach(btn => {
+                document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
                     if (btn.textContent.includes('Add New') || 
+                        btn.textContent.includes('Add User') ||
                         btn.textContent.includes('Save') || 
                         btn.textContent.includes('Reset') ||
-                        btn.textContent.includes('View All')) {
+                        btn.textContent.includes('Create') ||
+                        btn.textContent.includes('Update')) {
                         btn.style.display = 'none';
                     }
                 });
                 
-                // Disable all inputs except search/filter
-                document.querySelectorAll('input:not([type="date"]):not([type="text"][placeholder*="Search"]):not([type="text"][placeholder*="keyword"]), select:not(#activityTypeFilter):not(#changelogTypeFilter):not(.form-select), .toggle-switch, .custom-checkbox').forEach(elem => {
-                    if (!elem.id || (!elem.id.includes('Search') && !elem.id.includes('Filter') && !elem.id.includes('Date'))) {
+                // Disable all inputs except search/filter fields
+                document.querySelectorAll('input, select, textarea, .toggle-switch, .custom-checkbox').forEach(elem => {
+                    // Allow search, filter, and date fields
+                    const isSearchField = elem.type === 'text' && (
+                        elem.placeholder?.includes('Search') || 
+                        elem.placeholder?.includes('search') ||
+                        elem.id?.includes('Search') ||
+                        elem.id?.includes('search')
+                    );
+                    const isFilterField = elem.id?.includes('Filter') || elem.classList.contains('form-select');
+                    const isDateField = elem.type === 'date' || elem.id?.includes('Date');
+                    
+                    if (!isSearchField && !isFilterField && !isDateField) {
                         elem.style.pointerEvents = 'none';
                         elem.style.opacity = '0.6';
                     }
@@ -4186,6 +4214,15 @@ const orderData = [
                 type: 'UPDATE',
                 action: 'BUGFIX',
                 details: 'Files Updated - Critical bug fixes applied to order processing module'
+            },
+            {
+                date: '2025-04-05 14:30:15',
+                timestamp: '892',
+                hex: '0x00413088',
+                user: 'WMS_Admin',
+                type: 'BUGFIX',
+                action: 'Authentication',
+                details: 'Critical Bug Fixed - Resolved OTP verification timeout issue causing failed login attempts after 2 minutes. Extended session validation to 3 minutes.'
             },
             {
                 date: '2025-02-24 13:00:15',
